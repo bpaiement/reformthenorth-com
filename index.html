@@ -15,7 +15,7 @@
     <link rel="canonical" href="https://reformthenorth.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&amp;family=Playfair+Display:ital,wght@0,400;0,500;1,400&amp;display=swap">
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
@@ -35,24 +35,25 @@
 
     <main id="main">
       <section class="hero" id="top" aria-label="Reform the North">
-        <div class="hero-banner">
-          <div class="hero-lockup">
-            <svg class="hero-mark" viewBox="0 0 48 48" aria-hidden="true" focusable="false">
-              <rect width="48" height="48" fill="#0B1C2C"/>
-              <path fill="#F4EFE6" d="M24 3.2C24 21.6 26.4 24 44.8 24C26.4 24 24 26.4 24 44.8C24 26.4 21.6 24 3.2 24C21.6 24 24 21.6 24 3.2Z"/>
-            </svg>
-            <h1 class="hero-name">Reform the North</h1>
-          </div>
-        </div>
         <figure class="hero-ground">
           <img src="assets/wilderness.jpg" alt="Jasper country. A turquoise lake, a small island of spruce, and mountains beyond." width="1600" height="900">
         </figure>
+        <div class="hero-lockup">
+          <svg class="hero-mark" viewBox="0 0 48 48" aria-hidden="true" focusable="false">
+            <rect width="48" height="48" fill="#0B1C2C"/>
+            <path fill="#F4EFE6" d="M24 3.2C24 21.6 26.4 24 44.8 24C26.4 24 24 26.4 24 44.8C24 26.4 21.6 24 3.2 24C21.6 24 24 21.6 24 3.2Z"/>
+          </svg>
+          <h1 class="hero-name">Reform the North</h1>
+        </div>
       </section>
 
       <section class="lede" id="case">
         <div class="wrap">
           <div class="lede-head">
-            <h2 class="lede-title">Canada needs reform.<br>It’s not too late.</h2>
+            <div class="lede-title-block">
+              <h2 class="lede-title">Canada needs reform.<br>It’s not too late.</h2>
+              <p class="lede-frame">A civic project, not a registered party.</p>
+            </div>
             <p class="lede-open">The Liberal Party and the Conservative Party have taken this country apart. They put foreigners and foreign wars ahead of the nation, and ahead of the people who built it.</p>
           </div>
           <article class="band">
@@ -82,7 +83,7 @@
                 </g>
                 <rect x="344" y="27.5" width="16" height="140.5" fill="#9B2335"/>
                 <rect x="368" y="53.7" width="16" height="114.3" fill="#0B1C2C"/>
-                <g fill="#6B6459" font-family="Georgia, serif" font-size="11">
+                <g fill="#6B6459" font-family="'IBM Plex Sans', Helvetica, Arial, sans-serif" font-size="11">
                   <text x="16" y="164" text-anchor="middle">2010</text>
                   <text x="136" y="164" text-anchor="middle">2015</text>
                   <text x="256" y="164" text-anchor="middle">2020</text>
@@ -156,11 +157,11 @@
     <script>
       (function () {
         var header = document.querySelector(".site-header");
-        var banner = document.querySelector(".hero-banner");
-        if (!header || !banner) return;
+        var hero = document.querySelector(".hero");
+        if (!header || !hero) return;
 
         function syncHeader() {
-          header.classList.toggle("is-on", banner.getBoundingClientRect().bottom < 12);
+          header.classList.toggle("is-on", hero.getBoundingClientRect().bottom < 12);
         }
 
         syncHeader();
