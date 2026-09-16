@@ -15,6 +15,16 @@
 - **Body p2:** Jobs, storefronts, and homes go to a workforce imported for that purpose. Temporary work is treated as an entitlement. The people who pay for the country wait.
 - **Body p3:** Federal and provincial governments answer to foreign constituencies before they answer to this one. That is not Canada.
 
+
+## Cost to keep them here (under intake chart)
+- **Kicker:** Cost to keep them here
+- **$1.2 billion** — IRCC asylum hotels & temp housing, Apr 2020–Sep 2025 (61,000 claimants)
+- **$1.8 billion** — Interim Housing Assistance Program to provinces & cities since 2017 (as of Oct 31, 2025)
+- **$896 million** — Interim Federal Health Program, 2024–25 alone (440,000+ asylum claimants among beneficiaries)
+- **$1.2 billion** — settlement services planned 2025–26 (outside Quebec; Quebec’s federal settlement grant was $867M in 2024–25)
+- **Removals note:** Ottawa does not publish what it costs to remove people instead of housing them. CBSA’s cost-recovery fees are $3,840 (unescorted) to $12,880 (escorted by air) per person — what someone removed at taxpayer expense must repay to return. That is not the full cost of enforcement, and it is not a substitute for the housing and health bills above.
+- **Source:** IRCC committee briefs on asylum support (Oct–Dec 2025); IRCC settlement/departmental materials 2025–26; CBSA / Canada Gazette removal cost-recovery (SOR/2024-284, in force Apr 2025).
+
 ## Abroad
 - **H3:** Abroad
 - **Body p1:** Since 2022, Canada has committed about $25–26 billion to Ukraine in military aid, grants, and credit. Under Mark Carney, Ottawa has also guaranteed loans: the cash is not sent up front, but Canadian taxpayers pay if Ukraine cannot repay the lender.

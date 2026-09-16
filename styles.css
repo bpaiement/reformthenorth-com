@@ -430,6 +430,32 @@ a:hover {
   line-height: 1.45;
 }
 
+.cost-strip {
+  margin: 1.5rem 0 0;
+  padding: 1.35rem 0 0;
+  border-top: 1px solid var(--pewter);
+}
+
+.cost-strip .data-kicker {
+  margin-bottom: 0.75rem;
+}
+
+.cost-strip .data-note {
+  margin: 0.85rem 0 0;
+}
+
+.cost-strip .spend-source {
+  margin: 0.65rem 0 0;
+}
+
+.data-facts--cost {
+  margin-bottom: 0;
+}
+
+.data-facts--cost dt {
+  color: var(--ink);
+}
+
 .spend-stack {
   display: grid;
   gap: 1.75rem;
@@ -558,6 +584,12 @@ a:hover {
   }
 }
 
+
+@media (min-width: 520px) {
+  .data-facts--cost {
+    grid-template-columns: 1fr 1fr;
+  }
+}
 @media (min-width: 800px) {
   .lede {
     padding: 5rem 0 5.5rem;
@@ -573,6 +605,10 @@ a:hover {
 
   .data-facts {
     grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .data-facts--cost {
+    grid-template-columns: 1fr 1fr;
   }
 }
 
