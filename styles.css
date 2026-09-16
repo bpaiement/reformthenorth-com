@@ -306,34 +306,44 @@ a:hover {
 }
 
 .lede-head {
-  display: grid;
-  gap: 1.25rem;
-  margin: 0 0 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 40rem;
+  margin: 0 auto 2.75rem;
+  text-align: center;
+}
+
+.lede-title-block {
+  margin: 0 0 1.35rem;
 }
 
 .lede-title {
   margin: 0;
-  font-size: clamp(2.1rem, 1.1rem + 3.2vw, 3.4rem);
+  font-size: clamp(2.25rem, 1.15rem + 3.6vw, 3.6rem);
   font-weight: 400;
   letter-spacing: -0.03em;
-  line-height: 1.08;
-  max-width: 10em;
+  line-height: 1.06;
+  text-wrap: balance;
 }
 
 .lede-frame {
-  margin: 0.75rem 0 0;
+  margin: 0.85rem 0 0;
   color: var(--metal);
   font-family: var(--sans);
-  font-size: 0.9rem;
+  font-size: 0.8125rem;
   font-weight: 500;
+  letter-spacing: 0.1em;
   line-height: 1.4;
+  text-transform: uppercase;
 }
 
 .lede-open {
-  margin: 0;
-  max-width: 38em;
+  margin: 0 auto;
+  max-width: 36ch;
   font-size: 1.125rem;
   line-height: 1.5;
+  text-wrap: pretty;
 }
 
 .band {
@@ -497,16 +507,6 @@ a:hover {
 @media (min-width: 800px) {
   .lede {
     padding: 5rem 0 5.5rem;
-  }
-
-  .lede-head {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 0.92fr);
-    gap: 3.5rem;
-    align-items: start;
-  }
-
-  .lede-open {
-    padding-top: 0.35em;
   }
 
   .band {

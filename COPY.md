@@ -1,18 +1,19 @@
 # Reform the North — Copy
 
 **Owner:** stead (voice) · Brian (values)  
-**Status:** final (stead, 2026-09-16) — implement these strings in `index.html`
+**Status:** final (stead, 2026-09-16) — one-col lede + flooding “at home”; implement in `index.html`
 
 ## Lede
 - **Title line 1:** Canada needs reform.
 - **Title line 2:** It is not too late.
-- **Open:** The Liberal Party and the Conservative Party have hollowed out this country. Foreign interests and foreign wars come first. The Canadians who built the nation come after.
 - **Civic frame:** A civic project, not a registered party.
+- **Open (one-col, ~36ch):** The Liberal Party and the Conservative Party have hollowed out this country. Foreign interests and foreign wars come first. The Canadians who built the nation come after.
 
-## Domestic
+## At home
 - **H3:** At home
-- **Body p1:** Canadians already here are being displaced. Work, storefronts, and housing go to a labour force imported for that purpose. Temporary work is treated as an entitlement. The people who pay for the country wait.
-- **Body p2:** Federal and provincial governments now answer to foreign constituencies before they answer to this one. That is not Canada.
+- **Body p1:** Ottawa is flooding the labour market, the housing market, and the welfare rolls.
+- **Body p2:** Jobs, storefronts, and homes go to a workforce imported for that purpose. Temporary work is treated as an entitlement. The people who pay for the country wait.
+- **Body p3:** Federal and provincial governments answer to foreign constituencies before they answer to this one. That is not Canada.
 
 ## Abroad
 - **H3:** Abroad
@@ -36,5 +37,5 @@
 - FR: « Le Canada n’est pas un hôtel. »
 
 ## Stead notes (for Brian)
-- Same claims/numbers/values; institutional cadence.
-- Optional restore: “displaced” → “replaced” in domestic p1 if Brian wants the harder word.
+- Dropped “replaced / displaced.” Flooding jobs, housing, and welfare.
+- Lede is one column, centered under the wordmark — not a two-col title/open split.
