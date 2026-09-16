@@ -1,0 +1,573 @@
+/* Reform the North, winter gazette */
+
+:root {
+  --paper: #f4efe6;
+  --ink: #0b1c2c;
+  --raised: #fbf8f2;
+  --metal: #6b6459;
+  --maple: #9b2335;
+  --pewter: #8a8378;
+  --header-h: 3.55rem;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-padding-top: calc(var(--header-h) + 0.75rem);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  overflow-x: clip;
+  max-width: 100%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  margin: 0;
+  max-width: 100%;
+  overflow-x: clip;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Playfair Display", "Iowan Old Style", Georgia, serif;
+  font-optical-sizing: auto;
+  font-size: 1.1875rem;
+  font-weight: 400;
+  line-height: 1.6;
+  font-kerning: normal;
+  text-rendering: optimizeLegibility;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .site-header {
+    transition: none !important;
+  }
+}
+
+img,
+svg {
+  max-width: 100%;
+  display: block;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Playfair Display", "Iowan Old Style", Georgia, serif;
+  font-weight: 500;
+  letter-spacing: -0.012em;
+  line-height: 1.12;
+  text-wrap: balance;
+  overflow-wrap: break-word;
+  color: var(--ink);
+}
+
+p {
+  text-wrap: pretty;
+  overflow-wrap: break-word;
+}
+
+a {
+  color: var(--ink);
+}
+
+a:hover {
+  color: var(--ink);
+}
+
+:focus {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+
+.site-header :focus-visible {
+  outline-color: var(--raised);
+}
+
+::selection {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.skip {
+  position: absolute;
+  left: 0.75rem;
+  top: -3.5rem;
+  z-index: 200;
+  background: var(--ink);
+  color: var(--raised);
+  padding: 0.5rem 0.8rem;
+  text-decoration: none;
+}
+
+.skip:focus {
+  top: 0.75rem;
+}
+
+.wrap {
+  width: min(68rem, 100%);
+  margin: 0 auto;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  min-width: 0;
+}
+
+@media (min-width: 600px) {
+  .wrap {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+/* Header: bar and name only */
+
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: var(--ink);
+  color: var(--raised);
+  border-bottom: 2px solid var(--maple);
+  transform: translateY(-110%);
+  transition: transform 0.35s ease;
+  pointer-events: none;
+}
+
+.site-header.is-on {
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  min-height: var(--header-h);
+  padding-top: 0.6rem;
+  padding-bottom: 0.6rem;
+}
+
+.wordmark {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin: 0;
+  color: var(--raised);
+  line-height: 1;
+  padding: 0.15rem 0;
+}
+
+.wordmark-mark {
+  width: 1.7rem;
+  height: 1.7rem;
+  flex-shrink: 0;
+  overflow: visible;
+}
+
+.wordmark .mark-sq {
+  fill: var(--ink);
+  stroke: var(--raised);
+  stroke-width: 1.35;
+}
+
+.wordmark .mark-star {
+  fill: var(--raised);
+}
+
+.wordmark-name {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 1.22rem;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+/* Hero */
+
+.hero {
+  padding: 0;
+  background: var(--paper);
+}
+
+.hero-ground {
+  margin: 0;
+  background: #1a2428;
+}
+
+.hero-ground img {
+  width: 100%;
+  height: min(68vh, 40rem);
+  object-fit: cover;
+  object-position: center 45%;
+}
+
+.hero-banner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3.75rem 1.25rem 3.5rem;
+}
+
+.hero-lockup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.85rem 1.15rem;
+  min-width: 0;
+}
+
+.hero-mark {
+  width: clamp(2.55rem, 7.5vw, 5.1rem);
+  height: clamp(2.55rem, 7.5vw, 5.1rem);
+  flex-shrink: 0;
+}
+
+.hero-name {
+  margin: 0;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(1.65rem, 0.7rem + 5vw, 4.2rem);
+  font-weight: 400;
+  letter-spacing: -0.025em;
+  line-height: 1;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+@media (max-width: 520px) {
+  .hero-lockup {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+
+@media (min-width: 800px) {
+  .hero-banner {
+    padding: 6.5rem 2rem 6.25rem;
+  }
+}
+
+/* Argument */
+
+.lede {
+  padding: 3.25rem 0 4rem;
+}
+
+.lede-head {
+  display: grid;
+  gap: 1.15rem;
+  margin: 0 0 2.35rem;
+}
+
+.lede-title {
+  margin: 0;
+  font-size: clamp(2.25rem, 1.15rem + 3.6vw, 3.85rem);
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  line-height: 1.08;
+  max-width: 10em;
+}
+
+.lede-open {
+  margin: 0;
+  max-width: 34em;
+  font-size: 1.2rem;
+  line-height: 1.5;
+}
+
+.band {
+  display: grid;
+  gap: 1.75rem;
+  margin: 0 0 3rem;
+  padding: 2rem 0 0;
+  border-top: 1px solid var(--pewter);
+}
+
+.band-copy h3 {
+  margin: 0 0 0.7rem;
+  font-size: 1.35rem;
+  font-weight: 500;
+}
+
+.band-copy p {
+  margin: 0 0 0.85rem;
+  max-width: 34em;
+  font-size: 1.125rem;
+  line-height: 1.55;
+}
+
+.band-copy p:last-child {
+  margin-bottom: 0;
+}
+
+.band-data {
+  margin: 0;
+}
+
+.data-kicker {
+  margin: 0 0 0.65rem;
+  color: var(--metal);
+  font-size: 0.95rem;
+}
+
+.intake-chart {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0 0 1rem;
+}
+
+.data-facts {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.85rem 1.25rem;
+  margin: 0 0 0.75rem;
+}
+
+.data-facts dt {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.data-facts dd {
+  margin: 0.15rem 0 0;
+  color: var(--metal);
+  font-size: 0.95rem;
+}
+
+.data-note {
+  margin: 0;
+  color: var(--metal);
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+
+.spend {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.spend li {
+  display: grid;
+  gap: 0.15rem;
+  margin: 0;
+  padding: 0.85rem 0;
+  border-top: 1px solid var(--pewter);
+}
+
+.spend li:last-child {
+  border-bottom: 1px solid var(--pewter);
+}
+
+.spend-out {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 500;
+}
+
+.spend-in {
+  margin: 0;
+  color: var(--metal);
+  font-size: 1.02rem;
+}
+
+.cta {
+  margin: 0;
+}
+
+.btn {
+  display: inline-block;
+  background: var(--ink);
+  color: var(--raised);
+  border: 1px solid var(--ink);
+  border-radius: 0;
+  padding: 0.9rem 1.35rem;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 1.0625rem;
+  line-height: 1.2;
+  text-decoration: none;
+  cursor: pointer;
+  min-height: 2.85rem;
+}
+
+.btn:hover {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.btn:focus-visible {
+  outline-offset: 3px;
+}
+
+@media (min-width: 800px) {
+  .lede {
+    padding: 5.25rem 0 6rem;
+  }
+
+  .lede-head {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.92fr);
+    gap: 4.5rem;
+    align-items: start;
+  }
+
+  .lede-open {
+    padding-top: 0.72em;
+  }
+
+  .band {
+    grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+    gap: 3.5rem;
+    align-items: start;
+    padding-top: 2.5rem;
+    margin-bottom: 3.5rem;
+  }
+
+  .data-facts {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+/* Footer */
+
+.site-footer {
+  padding: 2rem 0 2.4rem;
+  border-top: 1px solid var(--pewter);
+  color: var(--metal);
+  font-size: 0.98rem;
+  line-height: 1.5;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin: 0 0 0.85rem;
+  color: var(--ink);
+}
+
+.footer-brand .wordmark-mark {
+  width: 2.15rem;
+  height: 2.15rem;
+}
+
+.footer-brand .mark-sq {
+  fill: var(--ink);
+  stroke: none;
+}
+
+.footer-brand .mark-star {
+  fill: var(--paper);
+}
+
+.footer-brand .wordmark-name {
+  font-size: 1.45rem;
+  color: var(--ink);
+}
+
+.footer-line {
+  margin: 0;
+  color: var(--ink);
+}
+
+.footer-note,
+.footer-fr {
+  margin: 0.45rem 0 0;
+}
+
+.footer-fr {
+  font-style: italic;
+}
+
+.site-footer a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.site-footer a:hover {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+@media (max-width: 380px) {
+  .wordmark-mark {
+    width: 1.45rem;
+    height: 1.45rem;
+  }
+
+  .wordmark-name {
+    font-size: 1.05rem;
+  }
+
+  body {
+    font-size: 1.125rem;
+  }
+
+  .hero-name {
+    font-size: 1.55rem;
+  }
+
+  .lede-title {
+    font-size: 2.15rem;
+    max-width: none;
+  }
+
+  .dek {
+    font-size: 1.125rem;
+  }
+
+  .footer-line {
+    max-width: 16em;
+  }
+}
+
+@media print {
+  .skip,
+  .site-header {
+    display: none !important;
+  }
+
+  body {
+    background: #fff;
+    color: #000;
+    font-size: 12pt;
+  }
+
+  .btn {
+    border: 1px solid #000;
+    color: #000;
+    background: transparent;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  .hero,
+  .lede {
+    padding: 1.25rem 0;
+  }
+}
