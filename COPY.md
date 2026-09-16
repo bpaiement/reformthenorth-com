@@ -1,7 +1,7 @@
 # Reform the North — Copy
 
 **Owner:** stead (voice) · Brian (values)  
-**Status:** final (stead, 2026-09-16) — one-col lede + flooding “at home”; implement in `index.html`
+**Status:** final (stead, 2026-09-16) — one-col lede, flooding at-home, abroad guarantees with two spend weights
 
 ## Lede
 - **Title line 1:** Canada needs reform.
@@ -17,16 +17,28 @@
 
 ## Abroad
 - **H3:** Abroad
-- **Body p1:** Since 2022, Canada has sent more than $26 billion to Ukraine. It put $5 billion into a G7 loan for Kyiv and signed a 100-year partnership this month.
-- **Body p2:** The house here is not in order. The chequebook is open anyway.
+- **Body p1:** Since 2022, Canada has committed about $25–26 billion to Ukraine in military aid, grants, and credit. Under Mark Carney, Ottawa has also guaranteed loans: the cash is not sent up front, but Canadian taxpayers pay if Ukraine cannot repay the lender.
+- **Body p2:** In December 2025, Canada backed a C$2.5 billion package that included World Bank and EBRD loan guarantees and IMF-related support. In September 2026, in Calgary with Zelenskyy, it added hundreds of millions more in guarantees and concessional loans — and signed a 100-year partnership. This week, Ottawa is talking about a share of a €90 billion EU-led Ukraine loan. That deal is not signed yet.
+- **Body p3:** The house here is not in order. The contingent liabilities keep growing anyway.
 
-## Spend rows
+## Spend — committed
+| Out | In | Punch |
+|-----|-----|-------|
+| ~$25–26 billion since 2022 | cumulative Canadian assistance to Ukraine | about 37,000 homes at $700,000 |
+| C$350 million | air-defence interceptors (Sep 2026) | |
+| C$200 million | EDC concessional loans for reconstruction (Sep 2026) | |
+
+## Spend — if Ukraine defaults (guarantees)
 | Out | In |
 |-----|-----|
-| $26 billion to Ukraine | about 37,000 homes at $700,000 |
-| $8.5 billion in arms | a year’s pay for about 24,000 family doctors |
-| $5 billion G7 loan | about 7,000 homes, or a large hospital |
-| 100-year partnership | a century of this country’s credit tied to another war |
+| C$1.3 billion | World Bank loan guarantee, 2026 reconstruction (Dec 2025) |
+| C$322 million | EBRD loan guarantee, gas and energy (Dec 2025) |
+| ~C$435 million | new EBRD loan guarantees, winter energy (Sep 2026) |
+| €90 billion EU Ukraine Support Loan | Canada seeking a share; not signed |
+
+## Spend — frame + source
+- **Frame:** 100-year partnership — a century of this country’s credit tied to another war
+- **Source:** Canadian government announcements (Halifax, Dec 2025; Calgary, Sep 2026) and Financial Times reporting on EU loan talks. Guarantees are contingent liabilities — Canada pays only if Ukraine defaults.
 
 ## CTA
 - **Primary:** Stand with Canada
