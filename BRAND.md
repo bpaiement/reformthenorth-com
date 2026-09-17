@@ -1,8 +1,10 @@
 # Reform the North — brand system
 
-In-repo copy of the brand skill. Load `reform-the-north-brand` before UI changes. Media: `assets/brand/`.
+In-repo brand guide (mirrors the Reform the North brand skill). Load that skill before UI changes.
 
-Canonical site: `reformthenorth.com` · X: `@ReformTheNorth` · repo: `bpaiement/reformthenorth-com` · media: `/assets/brand/`
+**Media pack:** [`/assets/brand/`](assets/brand/) — `mark.svg`, avatars, banner, favicon, og, wordmark.
+
+Canonical site: `reformthenorth.com` · X: `@ReformTheNorth` · repo: `bpaiement/reformthenorth-com` (public)
 
 Winter gazette / civic broadsheet. Cold, sharp, Canadian. Not SaaS purple, not soft blob marketing, not party campaign chrome.
 
