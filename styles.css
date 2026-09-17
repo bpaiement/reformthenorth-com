@@ -242,7 +242,7 @@ a:hover {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   gap: 0.75rem 0.9rem;
   padding: 1.35rem 0 1.25rem;
@@ -257,7 +257,7 @@ a:hover {
   max-width: 68px;
   max-height: 68px;
   flex: 0 0 68px;
-  margin-top: 0.05em;
+  margin-top: 0;
   overflow: hidden;
 }
 
