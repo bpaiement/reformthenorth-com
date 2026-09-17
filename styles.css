@@ -400,39 +400,11 @@ p + p {
   color: var(--metal);
 }
 
-.chart-toggle {
-  display: inline-flex;
-  margin-top: 16px;
-  border: 1px solid var(--pewter);
-  background: var(--raised);
-}
-.chart-toggle-btn {
-  appearance: none;
-  border: 0;
-  margin: 0;
-  padding: 8px 14px;
-  background: transparent;
-  color: var(--metal);
-  font: inherit;
-  font-size: 13px;
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  cursor: pointer;
-  border-right: 1px solid var(--pewter);
-}
-.chart-toggle-btn:last-child {
-  border-right: 0;
-}
-.chart-toggle-btn.is-active,
-.chart-toggle-btn[aria-checked="true"] {
-  background: var(--ink);
-  color: var(--raised);
-}
-.chart-toggle-btn:focus-visible {
-  outline: 2px solid var(--maple);
-  outline-offset: 2px;
-  z-index: 1;
-}
+/* chart-toggle removed */
+
+
+
+
 .chart-legend {
   display: flex;
   flex-wrap: wrap;
@@ -458,92 +430,62 @@ p + p {
 .chart-legend-item--tr i {
   background: var(--maple);
 }
-.chart[data-mode="both"] .chart-years {
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-}
-.chart[data-mode="temporary"] .chart-years {
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-}
 .chart-bar--pr {
   background: var(--ink);
 }
 .chart-bar--tr {
   background: var(--maple);
 }
-.chart[data-mode="both"] .chart-number {
-  bottom: calc(max(var(--bar-pr, var(--bar)), var(--bar-tr, var(--bar))) + 10px);
-}
 
-.chart[data-mode="both"] .chart-year-bars {
-  position: absolute;
-  inset: 0 6% 0;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  gap: 4px;
-}
-.chart[data-mode="both"] .chart-year-bars .chart-bar {
-  position: relative;
-  left: auto;
-  right: auto;
-  bottom: 0;
-  width: auto;
-  flex: 1 1 0;
-  max-width: 48%;
-  height: var(--bar);
-  min-height: 2px;
-}
-.chart[data-mode="temporary"] .chart-year--peak .chart-bar--tr,
-.chart[data-mode="both"] .chart-year--peak .chart-bar--pr {
-  background: var(--maple);
-}
-.chart[data-mode="both"] .chart-year--peak .chart-bar--tr {
-  background: var(--maple);
-  outline: 1px solid var(--ink);
-  outline-offset: -1px;
-}
-
-@media (max-width: 767px) {
-  .chart-toggle {
-    display: flex;
-    width: 100%;
-  }
-  .chart-toggle-btn {
-    flex: 1 1 0;
-    padding: 10px 8px;
-    font-size: 12px;
-  }
-  .chart[data-mode="both"] .chart-year {
-    grid-template-rows: 18px 8px 8px;
-    row-gap: 4px;
-  }
-  .chart[data-mode="both"] .chart-year-bars {
-    position: static;
-    display: contents;
-  }
-  .chart[data-mode="both"] .chart-bar--pr {
-    grid-column: 1 / -1;
-    grid-row: 2;
-    width: var(--bar-pr, var(--bar));
-    height: 8px;
-  }
-  .chart[data-mode="both"] .chart-bar--tr {
-    grid-column: 1 / -1;
-    grid-row: 3;
-    width: var(--bar-tr, var(--bar));
-    height: 8px;
-  }
-}
+        }
 
 .chart-unit {
   font-size: 12px;
   color: var(--metal);
   margin-top: 10px;
 }
+
+
+
+.chart-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 20px;
+  margin: 14px 0 0;
+  font-size: 12px;
+  color: var(--metal);
+}
+.chart-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.chart-legend-item i {
+  display: block;
+  width: 14px;
+  height: 8px;
+  background: var(--ink);
+}
+.chart-legend-item--tr i {
+  background: var(--maple);
+}
 .chart {
   position: relative;
   padding: 40px 0 40px 58px;
   margin-top: 12px;
+}
+.chart-scale {
+  position: absolute;
+  left: 0;
+  top: 40px;
+  height: 240px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 11px;
+  line-height: 1;
+  color: var(--metal);
+  font-variant-numeric: tabular-nums;
 }
 .chart-years {
   list-style: none;
@@ -573,15 +515,36 @@ p + p {
   height: 100%;
   z-index: 1;
 }
-.chart-bar {
+.chart-stack {
+  position: absolute;
+  left: 12%;
+  right: 12%;
+  bottom: 0;
+  height: var(--bar);
+  display: flex;
+  flex-direction: column-reverse;
+}
+.chart-stack .chart-bar {
+  position: relative;
+  left: auto;
+  right: auto;
+  bottom: auto;
+  width: 100%;
+  height: var(--seg);
+  min-height: 0;
+}
+.chart-year:not(.chart-year--stacked) .chart-bar {
   position: absolute;
   bottom: 0;
   left: 12%;
   right: 12%;
-  height: var(--bar);
+  height: var(--seg, var(--bar));
+  width: auto;
+}
+.chart-bar--pr {
   background: var(--ink);
 }
-.chart-year--peak .chart-bar {
+.chart-bar--tr {
   background: var(--maple);
 }
 .chart-label {
@@ -603,7 +566,8 @@ p + p {
   line-height: 1.35;
   font-variant-numeric: tabular-nums;
 }
-.chart-year--peak .chart-number {
+.chart-year--peak .chart-number,
+.chart-year--stacked.chart-year--peak .chart-number {
   left: auto;
   right: 0;
 }
@@ -614,19 +578,18 @@ p + p {
   text-align: right;
   color: var(--metal);
 }
-.chart-scale {
+.chart-number--sub {
   position: absolute;
+  bottom: calc(var(--bar) + 28px);
   left: 0;
-  top: 40px;
-  height: 240px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  right: 0;
+  display: block;
   font-size: 11px;
-  line-height: 1;
+  font-weight: 400;
   color: var(--metal);
-  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
 }
+
 .source-line {
   font-size: 13px;
   line-height: 1.55;
@@ -1380,9 +1343,12 @@ summary::-webkit-details-marker {
   .chart-year {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 18px 8px;
+    grid-template-rows: auto 8px;
     row-gap: 5px;
     height: auto;
+  }
+  .chart-year--stacked {
+    grid-template-rows: auto 8px;
   }
   .chart-label {
     position: static;
@@ -1393,13 +1359,32 @@ summary::-webkit-details-marker {
     grid-row: 1;
     color: var(--ink);
   }
-  .chart-bar {
+  .chart-year:not(.chart-year--stacked) .chart-bar {
     position: static;
-    grid-column: 1/-1;
+    grid-column: 1 / -1;
     grid-row: 2;
-    width: var(--bar);
+    width: var(--seg, var(--bar));
     height: 8px;
-    min-height: 8px;
+    left: auto;
+    right: auto;
+  }
+  .chart-stack {
+    position: static;
+    display: flex;
+    flex-direction: row;
+    height: 8px;
+    width: var(--bar);
+    max-width: 100%;
+    left: auto;
+    right: auto;
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+  .chart-stack .chart-bar {
+    position: static;
+    height: 8px;
+    width: var(--seg);
+    flex: 0 0 auto;
   }
   .chart-number,
   .chart-year--peak .chart-number {
@@ -1414,6 +1399,14 @@ summary::-webkit-details-marker {
     display: inline;
     font-size: 11px;
     margin-left: 5px;
+  }
+  .chart-number--sub {
+    position: static;
+    display: block;
+    grid-column: 1 / -1;
+    grid-row: 3;
+    text-align: right;
+    margin-top: 2px;
   }
   .intake-figure .source-line {
     margin-top: 22px;

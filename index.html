@@ -30,7 +30,7 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&amp;family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&amp;display=swap"
     />
-    <link rel="stylesheet" href="styles.css?v=intake-toggle-20260917b" />
+    <link rel="stylesheet" href="styles.css?v=stack-hybrid-20260917c" />
   </head>
   <body>
     <a class="skip" href="#main">Skip to content</a>
@@ -177,150 +177,118 @@
           >
             <div class="figure-heading">
               <h3 id="chart-title">Intake &amp; presence</h3>
-              <span class="figure-period" data-chart-period>2010–2025</span>
+              <span class="figure-period">2010–2025</span>
             </div>
-            <div
-              class="chart-toggle"
-              role="radiogroup"
-              aria-label="Chart series"
-            >
-              <button
-                type="button"
-                class="chart-toggle-btn is-active"
-                role="radio"
-                aria-checked="true"
-                data-series="permanent"
-              >
-                Permanent
-              </button>
-              <button
-                type="button"
-                class="chart-toggle-btn"
-                role="radio"
-                aria-checked="false"
-                data-series="temporary"
-              >
-                Temporary
-              </button>
-              <button
-                type="button"
-                class="chart-toggle-btn"
-                role="radio"
-                aria-checked="false"
-                data-series="both"
-              >
-                Both
-              </button>
-            </div>
-            <p class="chart-unit" id="chart-description" data-chart-unit>
-              New permanent residents admitted each year
+            <p class="chart-unit" id="chart-description">
+              Permanent admissions each year; temporary inflows stacked 2021–24
             </p>
-            <div class="chart-legend" data-chart-legend hidden>
+            <div class="chart-legend" data-chart-legend>
               <span class="chart-legend-item chart-legend-item--pr"
-                ><i aria-hidden="true"></i> Permanent admissions</span
+                ><i aria-hidden="true"></i> Permanent (IRCC)</span
               >
               <span class="chart-legend-item chart-legend-item--tr"
-                ><i aria-hidden="true"></i> Temporary stock (July&nbsp;1)</span
+                ><i aria-hidden="true"></i> Temporary inflows (StatCan,
+                2021–24)</span
               >
             </div>
             <div
               class="chart"
               role="img"
               data-chart-canvas
-              aria-label="Annual permanent resident admissions, 2010 to 2025. Approximately 281,000 in 2010, rising to the series peak of approximately 484,000 in 2024, then declining in 2025. Bar lengths preserve the published series; only the two headline counts are labelled."
+              aria-label="Permanent resident admissions from 2010 to 2025, with temporary-resident inflows stacked on 2021 to 2024. Permanent admissions rise from about 281,000 in 2010 to a permanent peak of about 484,000 in 2024. Stacked totals peak around 1.72 million in 2023. Temporary layer uses Statistics Canada July–June inflows mapped to calendar years. Stack is not unique persons."
             >
-              <div class="chart-scale" aria-hidden="true" data-chart-scale>
-                <span>500,000</span><span>250,000</span><span>0</span>
+              <div class="chart-scale" aria-hidden="true">
+                <span>1.8M</span><span>0.9M</span><span>0</span>
               </div>
-              <ol class="chart-years" aria-hidden="true" data-chart-years>
-                <li class="chart-year" style="--bar: 56.2069%">
-                  <span class="chart-label">2010</span
-                  ><span class="chart-bar chart-bar--pr" aria-hidden="true"></span
-                  ><span class="chart-number">281,000</span>
+              <ol class="chart-years" aria-hidden="true">
+                <li class="chart-year" style="--bar: 15.6111%; --bar-pr: 15.6111%; --bar-tr: 0.0000%">
+                  <span class="chart-label">2010</span>
+                  <span class="chart-bar chart-bar--pr" style="--seg: 15.6111%" aria-hidden="true"></span>
+                  <span class="chart-number">281,000</span>
                 </li>
-                <li class="chart-year" style="--bar: 49.7931%">
-                  <span class="chart-label">2011</span
-                  ><span class="chart-bar chart-bar--pr" aria-hidden="true"></span
-                  >
+                <li class="chart-year" style="--bar: 13.8314%; --bar-pr: 13.8314%; --bar-tr: 0.0000%">
+                  <span class="chart-label">2011</span>
+                  <span class="chart-bar chart-bar--pr" style="--seg: 13.8314%" aria-hidden="true"></span>
+                  
                 </li>
-                <li class="chart-year" style="--bar: 51.6552%">
-                  <span class="chart-label">2012</span
-                  ><span class="chart-bar chart-bar--pr" aria-hidden="true"></span
-                  >
+                <li class="chart-year" style="--bar: 14.3487%; --bar-pr: 14.3487%; --bar-tr: 0.0000%">
+                  <span class="chart-label">2012</span>
+                  <span class="chart-bar chart-bar--pr" style="--seg: 14.3487%" aria-hidden="true"></span>
+                  
                 </li>
-                <li class="chart-year" style="--bar: 51.8621%">
-                  <span class="chart-label">2013</span
-                  ><span class="chart-bar chart-bar--pr" aria-hidden="true"></span
-                  >
+                <li class="chart-year" style="--bar: 14.4061%; --bar-pr: 14.4061%; --bar-tr: 0.0000%">
+                  <span class="chart-label">2013</span>
+                  <span class="chart-bar chart-bar--pr" style="--seg: 14.4061%" aria-hidden="true"></span>
+                  
                 </li>
-                <li class="chart-year" style="--bar: 52.1379%">
-                  <span class="chart-label">2014</span
-                  ><span class="chart-bar chart-bar--pr" aria-hidden="true"></span
-                  >
+                <li class="chart-year" style="--bar: 14.4828%; --bar-pr: 14.4828%; --bar-tr: 0.0000%">
+                  <span class="chart-label">2014</span>
+                  <span class="chart-bar chart-bar--pr" style="--seg: 14.4828%" aria-hidden="true"></span>
+                  
                 </li>
-                <li class="chart-year" style="--bar: 54.4138%">
-                  <span class="chart-label">2015</span
-                  ><span class="chart-bar chart-bar--pr" aria-hidden="true"></span
-                  >
+                <li class="chart-year" style="--bar: 15.1149%; --bar-pr: 15.1149%; --bar-tr: 0.0000%">
+                  <span class="chart-label">2015</span>
+                  <span class="chart-bar chart-bar--pr" style="--seg: 15.1149%" aria-hidden="true"></span>
+                  
                 </li>
-                <li class="chart-year" style="--bar: 59.3793%">
-                  <span class="chart-label">2016</span
-                  ><span class="chart-bar chart-bar--pr" aria-hidden="true"></span
-                  >
+                <li class="chart-year" style="--bar: 16.4942%; --bar-pr: 16.4942%; --bar-tr: 0.0000%">
+                  <span class="chart-label">2016</span>
+                  <span class="chart-bar chart-bar--pr" style="--seg: 16.4942%" aria-hidden="true"></span>
+                  
                 </li>
-                <li class="chart-year" style="--bar: 57.3793%">
-                  <span class="chart-label">2017</span
-                  ><span class="chart-bar chart-bar--pr" aria-hidden="true"></span
-                  >
+                <li class="chart-year" style="--bar: 15.9387%; --bar-pr: 15.9387%; --bar-tr: 0.0000%">
+                  <span class="chart-label">2017</span>
+                  <span class="chart-bar chart-bar--pr" style="--seg: 15.9387%" aria-hidden="true"></span>
+                  
                 </li>
-                <li class="chart-year" style="--bar: 64.2759%">
-                  <span class="chart-label">2018</span
-                  ><span class="chart-bar chart-bar--pr" aria-hidden="true"></span
-                  >
+                <li class="chart-year" style="--bar: 17.8544%; --bar-pr: 17.8544%; --bar-tr: 0.0000%">
+                  <span class="chart-label">2018</span>
+                  <span class="chart-bar chart-bar--pr" style="--seg: 17.8544%" aria-hidden="true"></span>
+                  
                 </li>
-                <li class="chart-year" style="--bar: 68.3448%">
-                  <span class="chart-label">2019</span
-                  ><span class="chart-bar chart-bar--pr" aria-hidden="true"></span
-                  >
+                <li class="chart-year" style="--bar: 18.9847%; --bar-pr: 18.9847%; --bar-tr: 0.0000%">
+                  <span class="chart-label">2019</span>
+                  <span class="chart-bar chart-bar--pr" style="--seg: 18.9847%" aria-hidden="true"></span>
+                  
                 </li>
-                <li class="chart-year" style="--bar: 36.8966%">
-                  <span class="chart-label">2020</span
-                  ><span class="chart-bar chart-bar--pr" aria-hidden="true"></span
-                  >
+                <li class="chart-year" style="--bar: 10.2491%; --bar-pr: 10.2491%; --bar-tr: 0.0000%">
+                  <span class="chart-label">2020</span>
+                  <span class="chart-bar chart-bar--pr" style="--seg: 10.2491%" aria-hidden="true"></span>
+                  
                 </li>
-                <li class="chart-year" style="--bar: 81.1724%">
-                  <span class="chart-label">2021</span
-                  ><span class="chart-bar chart-bar--pr" aria-hidden="true"></span
-                  >
+                <li class="chart-year chart-year--stacked" style="--bar: 61.2791%; --bar-pr: 22.5479%; --bar-tr: 38.7312%">
+                  <span class="chart-label">2021</span>
+                  <span class="chart-stack" aria-hidden="true"><span class="chart-bar chart-bar--pr" style="--seg: 22.5479%"></span><span class="chart-bar chart-bar--tr" style="--seg: 38.7312%"></span></span>
+                  <span class="chart-number">1.1M</span>
                 </li>
-                <li class="chart-year" style="--bar: 87.5172%">
-                  <span class="chart-label">2022</span
-                  ><span class="chart-bar chart-bar--pr" aria-hidden="true"></span
-                  >
+                <li class="chart-year chart-year--stacked" style="--bar: 83.6215%; --bar-pr: 24.3103%; --bar-tr: 59.3112%">
+                  <span class="chart-label">2022</span>
+                  <span class="chart-stack" aria-hidden="true"><span class="chart-bar chart-bar--pr" style="--seg: 24.3103%"></span><span class="chart-bar chart-bar--tr" style="--seg: 59.3112%"></span></span>
+                  <span class="chart-number">1.51M</span>
                 </li>
-                <li class="chart-year" style="--bar: 94.4828%">
-                  <span class="chart-label">2023</span
-                  ><span class="chart-bar chart-bar--pr" aria-hidden="true"></span
-                  >
+                <li class="chart-year chart-year--peak chart-year--stacked" style="--bar: 95.7815%; --bar-pr: 26.2452%; --bar-tr: 69.5363%">
+                  <span class="chart-label">2023</span>
+                  <span class="chart-stack" aria-hidden="true"><span class="chart-bar chart-bar--pr" style="--seg: 26.2452%"></span><span class="chart-bar chart-bar--tr" style="--seg: 69.5363%"></span></span>
+                  <span class="chart-number">1.72M <span class="chart-peak-word">peak</span></span>
                 </li>
-                <li class="chart-year chart-year--peak" style="--bar: 96.8966%">
-                  <span class="chart-label">2024</span
-                  ><span class="chart-bar chart-bar--pr" aria-hidden="true"></span
-                  ><span class="chart-number"
-                    >484,000 <span class="chart-peak-word">peak</span></span
-                  >
+                <li class="chart-year chart-year--stacked" style="--bar: 64.4533%; --bar-pr: 26.8889%; --bar-tr: 37.5644%">
+                  <span class="chart-label">2024</span>
+                  <span class="chart-stack" aria-hidden="true"><span class="chart-bar chart-bar--pr" style="--seg: 26.8889%"></span><span class="chart-bar chart-bar--tr" style="--seg: 37.5644%"></span></span>
+                  <span class="chart-number">1.16M <span class="chart-peak-word">stack</span></span><span class="chart-number chart-number--sub">484,000 PR peak</span>
                 </li>
-                <li class="chart-year" style="--bar: 78.8276%">
-                  <span class="chart-label">2025</span
-                  ><span class="chart-bar chart-bar--pr" aria-hidden="true"></span
-                  >
+                <li class="chart-year" style="--bar: 21.8966%; --bar-pr: 21.8966%; --bar-tr: 0.0000%">
+                  <span class="chart-label">2025</span>
+                  <span class="chart-bar chart-bar--pr" style="--seg: 21.8966%" aria-hidden="true"></span>
+                  
                 </li>
               </ol>
             </div>
-            <figcaption class="source-line" id="intake-note" data-chart-note>
-              Permanent is annual admissions (IRCC). Temporary is how many
-              non-permanent residents were in Canada on July&nbsp;1 (Statistics
-              Canada) — a stock, not a yearly inflow.
+            <figcaption class="source-line" id="intake-note">
+              Ink: permanent residents admitted that calendar year (IRCC). Maple
+              (2021–24): temporary-resident inflows in the overlapping
+              July–June StatCan year. Stack is not unique persons — some
+              temporary residents later become permanent. No temporary layer
+              before 2021.
               <a href="#source-intake">Source &amp; definitions ↗</a>
             </figcaption>
           </figure>
@@ -362,8 +330,10 @@
           </div>
         </dl>
         <p class="source-line intake-context">
-          Permanent admissions are an annual flow. Temporary residents are a
-          population count at a point in time; the two are not added together.
+          Permanent admissions are an annual flow (IRCC). Temporary inflows
+          stacked on 2021–24 are StatCan July–June NPR inflows mapped to those
+          calendar years — not unique persons. The 3.15&nbsp;million fact remains
+          a stock peak, not a chart layer.
         </p>
       </section>
       <section
@@ -594,20 +564,21 @@
             </summary>
             <div class="source-body">
               <p>
-                Permanent resident admissions: Immigration, Refugees and
-                Citizenship Canada, annual admissions series, 2010–2025. Temporary
-                (non-permanent resident) July&nbsp;1 stock from Statistics Canada
-                table 17-10-0158-01 for 2021–2025; the 3.15&nbsp;million temporary
-                peak is the 2024-10 quarterly figure from table 17-10-0121-01, not
-                the July&nbsp;1 bar. Years 2018–2020 are omitted from Temporary
-                because of a methodology gap between archived and modern tables.
-                The chart retains the permanent annual series used on this site; the 2010 and
-                2024 headline counts are rounded.
+                Permanent resident admissions (ink): Immigration, Refugees and
+                Citizenship Canada, annual calendar-year admissions, 2010–2025.
+                Temporary inflows (maple, 2021–24 only): Statistics Canada table
+                17-10-0008-01, Non-permanent residents, inflows, mapped
+                2021←2021/22 (697,162), 2022←2022/23 (1,067,601),
+                2023←2023/24 (1,251,653), 2024←2024/25 (676,160). Stack heights
+                add the two layers for those years; they are not unique persons.
+                No temporary layer before 2021; 2025 is permanent-only until the
+                next inflow year is published.
               </p>
               <p>
-                Temporary residents: Statistics Canada, 2024 peak population
-                estimate. This is a population count, not annual admissions, and
-                is not added to the permanent resident series.
+                The 3.15&nbsp;million temporary figure in the facts is the
+                October 2024 quarterly stock peak from Statistics Canada table
+                17-10-0121-01 — a population count, not an inflow bar, and not
+                stacked on the chart.
               </p>
               <p>
                 The chart describes admissions, not a causal estimate of housing
@@ -737,6 +708,6 @@
         </nav>
       </div>
     </footer>
-    <script src="site.js?v=intake-toggle-20260917b" defer></script>
+    <script src="site.js?v=stack-hybrid-20260917c" defer></script>
   </body>
 </html>

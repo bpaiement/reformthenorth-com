@@ -9,13 +9,11 @@
 - **Purpose p2:** Borders, housing, and the national chequebook are not optional.
 - **Civic frame:** A civic project, not a registered party.
 
-## Chart toggle (intake)
-- Title: Intake & presence
-- Toggle: Permanent | Temporary | Both (default Permanent)
-- Permanent: IRCC annual admissions (existing series)
-- Temporary: StatsCan 17-10-0158-01 July 1 NPR stock 2021–2025 (1,361,855 → 3,039,170 → 3,024,216). 3.15M remains Oct 2024 quarterly peak (17-10-0121-01).
-- Both: dual bars, own-scale; never a combined total.
-- Note: Permanent is annual admissions (IRCC). Temporary is July 1 stock (Statistics Canada).
+## Intake chart (hybrid stack)
+- No toggle. 2010–2025 IRCC permanent admissions (ink).
+- Maple stack 2021–24 only: StatCan 17-10-0008-01 NPR inflows mapped 2021←2021/22 … 2024←2024/25.
+- 2025 permanent-only. Caption: stack ≠ unique persons.
+- Scale to 1.8M. Keep 2010 = 281,000 and 2024 PR peak 484,000 callout; stack totals on 2021–24.
 
 ## Lede
 - **Title line 1:** Canada needs reform.
