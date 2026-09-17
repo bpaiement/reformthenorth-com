@@ -469,6 +469,56 @@ p + p {
 .chart-legend-item--tr i {
   background: var(--maple);
 }
+
+.chart-callout {
+  font-size: 12px;
+  color: var(--ink);
+  font-weight: 500;
+  padding: 4px 0;
+}
+.chart-callout strong {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+.chart-era-note {
+  margin: 8px 0 0;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--pewter);
+}
+.chart-years--hybrid {
+  gap: 6px;
+}
+.chart-years--hybrid .chart-year--stacked {
+  margin-inline: 3px;
+}
+.chart-years--hybrid .chart-year--early:not(.chart-year--stacked) .chart-bar,
+.chart-years--hybrid .chart-year--early:not(.chart-year--stacked) .chart-stack {
+  left: 22%;
+  right: 22%;
+}
+.chart-years--hybrid .chart-year--stacked .chart-stack {
+  left: 8%;
+  right: 8%;
+}
+.chart-year--stacked .chart-number {
+  left: 50%;
+  right: auto;
+  transform: translateX(-50%);
+  text-align: center;
+}
+.chart-year--peak .chart-number {
+  left: 50%;
+  right: auto;
+  transform: translateX(-50%);
+}
+.chart-peak-word {
+  display: inline;
+  margin-left: 4px;
+  text-align: inherit;
+}
+
 .chart {
   position: relative;
   padding: 40px 0 40px 58px;
@@ -577,17 +627,6 @@ p + p {
   font-weight: 400;
   text-align: right;
   color: var(--metal);
-}
-.chart-number--sub {
-  position: absolute;
-  bottom: calc(var(--bar) + 28px);
-  left: 0;
-  right: 0;
-  display: block;
-  font-size: 11px;
-  font-weight: 400;
-  color: var(--metal);
-  white-space: nowrap;
 }
 
 .source-line {
@@ -1400,15 +1439,32 @@ summary::-webkit-details-marker {
     font-size: 11px;
     margin-left: 5px;
   }
-  .chart-number--sub {
-    position: static;
-    display: block;
-    grid-column: 1 / -1;
-    grid-row: 3;
-    text-align: right;
-    margin-top: 2px;
+
+  .chart-legend {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
   }
-  .intake-figure .source-line {
+  .chart-era-note {
+    margin-top: 10px;
+  }
+  .chart-years--hybrid .chart-year--early:not(.chart-year--stacked) .chart-bar {
+    left: auto;
+    right: auto;
+  }
+  .chart-years--hybrid .chart-year--stacked .chart-stack {
+    left: auto;
+    right: auto;
+  }
+  .chart-year--stacked .chart-number,
+  .chart-year--peak .chart-number {
+    left: auto;
+    right: auto;
+    transform: none;
+    text-align: right;
+  }
+
+    .intake-figure .source-line {
     margin-top: 22px;
   }
   .source-line {
