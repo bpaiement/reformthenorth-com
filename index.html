@@ -209,15 +209,38 @@
       (function () {
         var header = document.querySelector(".site-header");
         var hero = document.querySelector(".hero");
-        if (!header || !hero) return;
+        var lockup = document.querySelector(".hero-lockup");
+        if (!header || !hero || !lockup) return;
 
-        function syncHeader() {
-          header.classList.toggle("is-on", hero.getBoundingClientRect().bottom < 12);
+        var reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+        function syncChrome() {
+          var rect = hero.getBoundingClientRect();
+          var photoGone = rect.bottom < 12;
+          header.classList.toggle("is-on", photoGone);
+
+          var opacity = 0;
+          if (!photoGone) {
+            var fadeRange = Math.max(rect.height * 0.42, 120);
+            var scrolled = Math.max(0, -rect.top);
+            opacity = Math.max(0, Math.min(1, 1 - scrolled / fadeRange));
+          }
+
+          if (reduce.matches) {
+            lockup.style.setProperty("--lockup-opacity", photoGone ? "0" : "1");
+          } else {
+            lockup.style.setProperty("--lockup-opacity", String(opacity));
+          }
         }
 
-        syncHeader();
-        window.addEventListener("scroll", syncHeader, { passive: true });
-        window.addEventListener("resize", syncHeader);
+        syncChrome();
+        window.addEventListener("scroll", syncChrome, { passive: true });
+        window.addEventListener("resize", syncChrome);
+        if (typeof reduce.addEventListener === "function") {
+          reduce.addEventListener("change", syncChrome);
+        } else if (typeof reduce.addListener === "function") {
+          reduce.addListener(syncChrome);
+        }
       })();
     </script>
   </body>
