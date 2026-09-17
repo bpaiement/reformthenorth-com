@@ -1,4 +1,6 @@
-# Reform the North — Art Direction (build sheet)
+# Reform the North — Art Direction (historical build sheet)
+
+> Superseded by [DESIGN.md](DESIGN.md) for the September 17, 2026 no-photo redesign requested by Brian. This file retains the earlier photo-based direction for history; do not use its photo, stacked-lockup or narrow-page instructions for new edits.
 
 **For:** Grok Build / frontend implementer  
 **From:** surface (UX/UI)  

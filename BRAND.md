@@ -49,8 +49,8 @@ Winter gazette / civic broadsheet. Cold, sharp, Canadian. Not SaaS purple, not s
 
 ## Chrome / hero
 
-1. Cream brand mast **above** the photo (not overlaid).
-2. Mast fades on scroll; ink sticky bar only after photo clears. Never both.
+1. Cream brand mast **above** the typographic mission hero (not overlaid). The current design has no hero photo or oversized field mark.
+2. Mast fades on scroll; ink sticky bar only after the entire mission hero clears. Never both during ordinary scrolling. Keep focused navigation visible until focus leaves.
 3. Respect `prefers-reduced-motion`.
 
 ## Copy voice (stead / anyone writing site strings)
