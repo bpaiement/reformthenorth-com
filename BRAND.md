@@ -1,9 +1,12 @@
 # Reform the North — brand system
 
-Canonical site: [reformthenorth.com](https://reformthenorth.com)  
-Skill: `reform-the-north-brand` (load before any UI change)
+In-repo copy of the brand skill. Load `reform-the-north-brand` before UI changes. Media: `assets/brand/`.
+
+Canonical site: `reformthenorth.com` · X: `@ReformTheNorth` · repo: `bpaiement/reformthenorth-com` · media: `/assets/brand/`
 
 Winter gazette / civic broadsheet. Cold, sharp, Canadian. Not SaaS purple, not soft blob marketing, not party campaign chrome.
+
+**Master mark reference:** the X avatar — cream four-point **north star** (concave arms, N–S points longer than E–W) centered on an ink (`#0B1C2C`) square. Recreate that geometry; do not use a flat equal-arm sparkle or a star-only glyph as the primary logo.
 
 ## Tokens (do not invent new ones)
 
@@ -16,68 +19,62 @@ Winter gazette / civic broadsheet. Cold, sharp, Canadian. Not SaaS purple, not s
 | Maple | `--maple` | `#9b2335` |
 | Pewter | `--pewter` | `#8a8378` |
 
-- Body background: paper. Selection: ink on paper (invert).
-- Maple is accent only: CTA fill, peak chart bar, thin sticky-header rule, guarantee-list ticks. Nowhere else.
-- No gradients as decoration. No glass. No rounded marketing cards. Corners `0` on buttons and tiles.
+- Body background: paper. Maple is accent only (CTA, peak chart bar, sticky rule, guarantee ticks).
+- No decorative gradients, glass, or rounded marketing cards. Corners `0` on buttons and tiles.
 
 ## Type
 
 | Role | Face | Notes |
 |------|------|--------|
-| Display | Playfair Display (`--display`) | Hero/mast name, lede title, FR italic footer only |
-| Body / UI | IBM Plex Sans (`--sans`) | Everything else: body, kickers, buttons, facts, chart labels |
+| Display | Playfair Display | Wordmark, lede title, FR italic footer |
+| Body / UI | IBM Plex Sans | Body, kickers, buttons, facts, chart labels |
 
-- Kickers: plex, ~0.75–0.8125rem, weight 500–600, uppercase, tracked (~0.08–0.12em), metal.
-- Never body in Playfair. Never Inter/Roboto as personality.
+## Mark & lockups
 
-## Mark
+1. **Primary app mark (matches X):** ink square + cream north star (elongated N–S). Export SVG + PNG @ 1x/2x/3x.
+2. **Mast / sticky lockup:** mark **left of** “Reform the North” always (`flex-direction: row` every breakpoint). Mast mark size **64–72px** on mobile, ~80px desktop (much larger than the old 40px). Name may wrap; mark stays left of the first line.
+3. Never a full-width blown-up tile. Never mark stacked above the name.
+4. Sticky ink bar: same north-star tile (cream on ink) + Playfair name in raised.
 
-- Four-point star in a square.
-- **On cream mast / paper:** ink star only (no full-bleed navy rect that can blow up). Fixed **40×40px** with SVG `width`/`height` attributes + CSS max. Mark **always left of the name** — `flex-direction: row` at every breakpoint. Name may wrap; mark stays left of first line.
-- **On ink sticky bar:** small mark (cream star / ink tile as needed for contrast) + Playfair name in raised. Same left-of-name rule.
-- Never a giant navy tile. Never mark stacked above the name on mobile.
+## Media package (ship together)
+
+- `mark.svg` / `mark-ink.svg` (primary)
+- Avatar: 400, 800, 1024 PNG (X-ready)
+- Banner: 1500×500 (wordmark on paper or photo crop — match X banner style)
+- Favicon 32 / 180 apple-touch
+- OG image 1200×630: mark + wordmark on paper
+- Wordmark-only SVG (ink on transparent)
 
 ## Chrome / hero
 
-1. **Cream brand mast above the photo** (not overlaid on the image). Centered pair: mark left + “Reform the North”.
-2. Mast **fades out** on scroll (~0.3s). Respect `prefers-reduced-motion` (instant).
-3. **Ink sticky bar** only after the photo clears the viewport. Never show mast + sticky bar together.
-4. Photo full-bleed under the mast; crop/object-position so it reads without on-photo logo.
+1. Cream brand mast **above** the photo (not overlaid).
+2. Mast fades on scroll; ink sticky bar only after photo clears. Never both.
+3. Respect `prefers-reduced-motion`.
 
-## Page rhythm
+## Copy voice (stead / anyone writing site strings)
 
-- Wrap max ~`56rem`.
-- Lede: one column, centered — title → civic frame (tracked uppercase metal) → open graf (~36ch).
-- Hard pewter rule into data bands.
-- At-home: copy + intake chart + fact strip; optional **Cost to keep them here** strip (dt/dd), removals as one metal note + source — not a fake keep-vs-remove total.
-- Abroad: committed vs if-default spend lists (maple tick / maple figures on guarantees only); 100-year frame as closer; one source line.
+Civic website, not rant-blog. Keep Brian’s values; tighten the diction.
 
-## Components
-
-- **Primary CTA:** maple fill, raised type, square, plex 600. Hover → ink fill. Focus-visible 2px ink offset.
-- **Facts:** ink on the number, metal on the gloss.
-- **Charts:** years **below** bars (viewBox padding under baseline), never labels inside fills. Maple only on the peak callout bar.
-
-## Copy ownership
-
-- Voice/strings: **stead** + `COPY.md`. Do not soften claims or invent stats.
-- Layout/art direction: **surface**. Implementation: coding agent / Grok Bot.
-- Optional: stead may add a copy-voice block to the brand skill; keep `COPY.md` as the string source of truth.
+1. **Thesis:** both Liberals and Conservatives failed the country — foreign interests and foreign wars ahead of Canadians who built it. Prefer “hollowed out” over blog-yell; do not soften the charge.
+2. **At home:** frame as flooding the labour market, housing market, and welfare rolls — not “Canadians already here are being replaced.” Temporary work as entitlement; governments answering foreign constituencies first.
+3. **Abroad / Ukraine:** distinguish money committed from loan **guarantees** (contingent liability — taxpayers pay if Ukraine defaults). Never imply Carney personally co-signed private debt. Flag unsigned talks (e.g. EU €90B share) as not signed.
+4. **Spend lists:** two weights — COMMITTED vs IF UKRAINE DEFAULTS. 100-year partnership is a closer line, not another row. Keep the ~37k-homes punch under the cumulative ~$26B only.
+5. **Cost strip:** publish only citable IRCC/CBSA/provincial figures. If Ottawa has no clean “keep vs remove” total, say so in one metal line — do not invent one. Removals cost-recovery fees are not full enforcement cost.
+6. **Facts:** no invented quotes, polls, or dollar totals. Cite sources in one small metal line under each data band.
+7. **CTA / footer:** “Stand with Canada”; “A civic project, not a registered party.”; FR « Le Canada n’est pas un hôtel. »
+8. Copy owner: stead drafts and revises site strings; UI bots do not freestyle thesis language.
 
 ## Hard anti-patterns
 
-- On-photo brand lockup / scrim for logo
-- Stacked mark above wordmark on mobile
-- Oversized navy SVG rect as a hero tile
-- Dark-on-dark or cream-on-cream text
-- All-Playfair body, purple gradients, glass cards, soft blobs
-- Mixing maple into random chrome
-- Shipping without cache-bust on `styles.css` after visual fixes
+- Star-only ink sparkle as the “logo” when X shows star-in-square
+- Tiny 40px mark when Brian asked for larger
+- On-photo brand lockup; stacked mark above name; dark-on-dark type
+- All-Playfair body; purple gradients; inventing stats
+- Softening sovereignty / flood / guarantee language into both-sides mush
 
-## Before shipping UI
+## Before shipping UI or copy
 
-1. Phone-width check: mast mark ≤40px, left of name, cream bar readable.
-2. Scroll: mast fades; sticky ink only after photo gone.
-3. Chart labels clear of bars.
-4. Maple only where specified.
-5. Hard-refresh / cache-bust CSS.
+1. Phone check: mark left of name, large enough, cream bar readable, geometry matches X.
+2. Scroll chrome correct; CSS cache-busted.
+3. Media pack files in `/assets/brand/`.
+4. New body copy reviewed against Copy voice above; figures have a published source.
