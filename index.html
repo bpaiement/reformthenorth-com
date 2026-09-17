@@ -30,7 +30,7 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&amp;family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&amp;display=swap"
     />
-    <link rel="stylesheet" href="styles.css?v=broadsheet-20260917" />
+    <link rel="stylesheet" href="styles.css?v=intake-toggle-20260917" />
   </head>
   <body>
     <a class="skip" href="#main">Skip to content</a>
@@ -171,25 +171,68 @@
         <div class="home-grid">
           <figure
             class="intake-figure"
+            data-intake-chart
             aria-labelledby="chart-title"
             aria-describedby="chart-description intake-note"
           >
             <div class="figure-heading">
-              <h3 id="chart-title">New permanent residents each year</h3>
-              <span class="figure-period">2010–2025</span>
+              <h3 id="chart-title">Intake &amp; presence</h3>
+              <span class="figure-period" data-chart-period>2010–2025</span>
             </div>
-            <p class="chart-unit" id="chart-description">
-              Annual admissions · people · zero baseline
+            <div
+              class="chart-toggle"
+              role="radiogroup"
+              aria-label="Chart series"
+            >
+              <button
+                type="button"
+                class="chart-toggle-btn is-active"
+                role="radio"
+                aria-checked="true"
+                data-series="permanent"
+              >
+                Permanent
+              </button>
+              <button
+                type="button"
+                class="chart-toggle-btn"
+                role="radio"
+                aria-checked="false"
+                data-series="temporary"
+              >
+                Temporary
+              </button>
+              <button
+                type="button"
+                class="chart-toggle-btn"
+                role="radio"
+                aria-checked="false"
+                data-series="both"
+              >
+                Both
+              </button>
+            </div>
+            <p class="chart-unit" id="chart-description" data-chart-unit>
+              New permanent residents admitted each year
             </p>
+            <div class="chart-legend" data-chart-legend hidden>
+              <span class="chart-legend-item chart-legend-item--pr"
+                ><i aria-hidden="true"></i> Permanent admissions</span
+              >
+              <span class="chart-legend-item chart-legend-item--tr"
+                ><i aria-hidden="true"></i> Temporary stock (July&nbsp;1)</span
+              >
+            </div>
             <div
               class="chart"
               role="img"
+              data-chart-canvas
               aria-label="Annual permanent resident admissions, 2010 to 2025. Approximately 281,000 in 2010, rising to the series peak of approximately 484,000 in 2024, then declining in 2025. Bar lengths preserve the published series; only the two headline counts are labelled."
             >
-              <div class="chart-scale" aria-hidden="true">
+              <div class="chart-scale" aria-hidden="true" data-chart-scale>
                 <span>500,000</span><span>250,000</span><span>0</span>
               </div>
-              <ol class="chart-years" aria-hidden="true">
+              <ol class="chart-years" aria-hidden="true" data-chart-years>
                 <li class="chart-year" style="--bar: 56.2069%">
                   <span class="chart-label">2010</span
                   ><span class="chart-bar" aria-hidden="true"></span
@@ -260,420 +303,10 @@
                 </li>
               </ol>
             </div>
-            <figcaption class="source-line" id="intake-note">
-              Source: IRCC, annual permanent resident admissions. Headline
-              counts rounded.
+            <figcaption class="source-line" id="intake-note" data-chart-note>
+              Permanent is annual admissions (IRCC). Temporary is how many
+              non-permanent residents were in Canada on July&nbsp;1 (Statistics
+              Canada) — a stock, not a yearly inflow.
               <a href="#source-intake">Source &amp; definitions ↗</a>
             </figcaption>
           </figure>
-          <div class="home-copy">
-            <p class="section-lead">
-              Ottawa is flooding the labour market, the housing market, and the
-              welfare rolls.
-            </p>
-            <p>
-              Jobs, storefronts, and homes go to a workforce imported for that
-              purpose. Temporary work is treated as an entitlement. The people
-              who pay for the country wait.
-            </p>
-            <p>
-              Federal and provincial governments answer to foreign
-              constituencies before they answer to this one. That is not Canada.
-            </p>
-          </div>
-        </div>
-        <dl class="intake-facts">
-          <div>
-            <dt>281,000</dt>
-            <dd>permanent residents admitted in 2010</dd>
-          </div>
-          <div>
-            <dt>484,000</dt>
-            <dd>permanent residents admitted in 2024</dd>
-          </div>
-          <div>
-            <dt>3.15 <span>million</span></dt>
-            <dd>
-              temporary residents at the 2024 peak
-              <a
-                href="#source-intake"
-                aria-label="Source and definition for temporary residents"
-                >↗</a
-              >
-            </dd>
-          </div>
-        </dl>
-        <p class="source-line intake-context">
-          Permanent admissions are an annual flow. Temporary residents are a
-          population count at a point in time; the two are not added together.
-        </p>
-      </section>
-      <section
-        class="cost-section section-space"
-        id="costs"
-        aria-labelledby="cost-title"
-      >
-        <div class="wrap">
-          <div class="section-heading">
-            <p class="kicker">02 / The cost at home</p>
-            <h2 id="cost-title">Cost to keep them here.</h2>
-            <p class="section-caption">
-              Separate programmes. Separate reporting periods. All amounts in
-              Canadian dollars.
-            </p>
-          </div>
-          <dl class="cost-ledger">
-            <div>
-              <dt>
-                <span class="metric-label"
-                  >Asylum hotels &amp; temporary housing</span
-                ><span class="metric-amount">$1.2 <span>billion</span></span>
-              </dt>
-              <dd>
-                <p>IRCC temporary accommodation for 61,000 claimants.</p>
-                <p class="metric-period">April 2020–September 2025</p>
-                <a class="source-link" href="#source-costs"
-                  >IRCC asylum support ↗</a
-                >
-              </dd>
-            </div>
-            <div>
-              <dt>
-                <span class="metric-label">Interim Housing Assistance</span
-                ><span class="metric-amount">$1.8 <span>billion</span></span>
-              </dt>
-              <dd>
-                <p>Support to provinces and cities since 2017.</p>
-                <p class="metric-period">As of October 31, 2025</p>
-                <a class="source-link" href="#source-costs"
-                  >IRCC asylum support ↗</a
-                >
-              </dd>
-            </div>
-            <div>
-              <dt>
-                <span class="metric-label">Interim Federal Health Program</span
-                ><span class="metric-amount">$896 <span>million</span></span>
-              </dt>
-              <dd>
-                <p>440,000+ asylum claimants among beneficiaries.</p>
-                <p class="metric-period">2024–25 fiscal year</p>
-                <a class="source-link" href="#source-costs"
-                  >IRCC programme spending ↗</a
-                >
-              </dd>
-            </div>
-            <div>
-              <dt>
-                <span class="metric-label">Settlement services · planned</span
-                ><span class="metric-amount">$1.2 <span>billion</span></span>
-              </dt>
-              <dd>
-                <p>
-                  Outside Quebec. Quebec’s separate federal settlement grant was
-                  $867 million in 2024–25.
-                </p>
-                <p class="metric-period">2025–26 planned funding</p>
-                <a class="source-link" href="#source-costs"
-                  >IRCC settlement materials ↗</a
-                >
-              </dd>
-            </div>
-          </dl>
-          <div class="removal-note">
-            <h3>What about removals?</h3>
-            <p>
-              Ottawa does not publish what it costs to remove people instead of
-              housing them. CBSA’s cost-recovery fees are $3,840 (unescorted) to
-              $12,880 (escorted by air) per person — what someone removed at
-              taxpayer expense must repay to return. That is not the full cost
-              of enforcement, and it is not a substitute for the housing and
-              health bills above. <a href="#source-removals">Source ↗</a>
-            </p>
-          </div>
-        </div>
-      </section>
-      <section
-        class="abroad-section wrap section-space"
-        id="abroad"
-        aria-labelledby="abroad-title"
-      >
-        <div class="section-heading">
-          <p class="kicker">03 / Commitments abroad</p>
-          <h2 id="abroad-title">Abroad.</h2>
-        </div>
-        <div class="abroad-intro">
-          <p class="section-lead">
-            The house here is not in order. The contingent liabilities keep
-            growing anyway.
-          </p>
-          <div>
-            <p>
-              Since 2022, Canada has committed about $25–26 billion to Ukraine
-              in military aid, grants, and credit. Under Mark Carney, Ottawa has
-              also guaranteed loans: the cash is not sent up front, but Canadian
-              taxpayers pay if Ukraine cannot repay the lender.
-            </p>
-            <p>
-              In December 2025, Canada backed a C$2.5 billion package that
-              included World Bank and EBRD loan guarantees and IMF-related
-              support. In September 2026, in Calgary with Zelenskyy, it added
-              hundreds of millions more in guarantees and concessional loans —
-              and signed a 100-year partnership.
-            </p>
-          </div>
-        </div>
-        <div class="abroad-ledgers">
-          <div class="committed-ledger">
-            <p class="kicker">Committed support</p>
-            <h3 class="ledger-total">C$25–26 <span>billion</span></h3>
-            <p class="ledger-definition">
-              Approximate cumulative Canadian assistance to Ukraine since 2022.
-              Commitments include aid, grants and credit; this is not a
-              cash-spent total.
-            </p>
-            <div class="homes-comparison">
-              <strong>About 37,000 homes</strong><span>at C$700,000 each.</span>
-              <p>
-                Illustrative arithmetic using C$26 billion. Not a
-                construction-cost estimate.
-              </p>
-            </div>
-            <p class="ledger-subhead">Selected commitments</p>
-            <dl class="spend-rows">
-              <div>
-                <dt>C$350 <span>million</span></dt>
-                <dd>Air-defence interceptors <span>September 2026</span></dd>
-              </div>
-              <div>
-                <dt>C$200 <span>million</span></dt>
-                <dd>
-                  EDC concessional loans for reconstruction
-                  <span>September 2026</span>
-                </dd>
-              </div>
-            </dl>
-            <p class="source-line">
-              Selected announcements may form part of the cumulative figure;
-              they are not added to it. <a href="#source-abroad">Sources ↗</a>
-            </p>
-          </div>
-          <div class="guarantee-ledger">
-            <p class="kicker">Contingent exposure</p>
-            <h3 class="ledger-heading">If Ukraine defaults.</h3>
-            <p class="ledger-definition">
-              Loan guarantees. Not money paid out up front. Taxpayers are
-              exposed if the borrower cannot repay, under the terms of each
-              guarantee.
-            </p>
-            <dl class="spend-rows guarantee-rows">
-              <div>
-                <dt>C$1.3 <span>billion</span></dt>
-                <dd>
-                  World Bank loan guarantee for 2026 reconstruction
-                  <span>Announced December 2025</span>
-                </dd>
-              </div>
-              <div>
-                <dt>C$322 <span>million</span></dt>
-                <dd>
-                  EBRD loan guarantee for gas and energy
-                  <span>Announced December 2025</span>
-                </dd>
-              </div>
-              <div>
-                <dt>~C$435 <span>million</span></dt>
-                <dd>
-                  New EBRD loan guarantees for winter energy
-                  <span>Announced September 2026</span>
-                </dd>
-              </div>
-            </dl>
-            <p class="source-line">
-              Guarantee amounts are shown separately from commitments and are
-              not presented as current expenditure.
-              <a href="#source-abroad">Sources ↗</a>
-            </p>
-          </div>
-        </div>
-        <aside class="unsigned-note" aria-labelledby="unsigned-title">
-          <p class="kicker">Under discussion · Not signed</p>
-          <div>
-            <h3 id="unsigned-title">€90 billion EU Ukraine Support Loan</h3>
-            <p>
-              Canada is seeking a share. The €90 billion figure describes the
-              EU-led facility, not an agreed Canadian contribution. No unsigned
-              amount is included in either ledger above.
-            </p>
-            <a class="source-link" href="#source-abroad"
-              >Reporting &amp; status ↗</a
-            >
-          </div>
-        </aside>
-        <p class="partnership-line">
-          100-year partnership — a century of this country’s credit tied to
-          another war.
-        </p>
-      </section>
-      <section
-        class="sources-section wrap section-space"
-        id="sources"
-        aria-labelledby="sources-title"
-      >
-        <div class="sources-heading">
-          <p class="kicker">The record</p>
-          <h2 id="sources-title">Sources &amp; definitions.</h2>
-          <p>
-            Read the periods, instruments and definitions alongside the headline
-            figures.
-          </p>
-        </div>
-        <div class="source-records">
-          <details id="source-intake">
-            <summary>
-              <span>01</span> Immigration &amp; resident counts
-              <span aria-hidden="true">+</span>
-            </summary>
-            <div class="source-body">
-              <p>
-                Permanent resident admissions: Immigration, Refugees and
-                Citizenship Canada, annual admissions series, 2010–2025. The
-                chart retains the annual series used on this site; the 2010 and
-                2024 headline counts are rounded.
-              </p>
-              <p>
-                Temporary residents: Statistics Canada, 2024 peak population
-                estimate. This is a population count, not annual admissions, and
-                is not added to the permanent resident series.
-              </p>
-              <p>
-                The chart describes admissions, not a causal estimate of housing
-                costs, health spending or wages. Illegal entry is not included
-                as a separate quantified series here.
-              </p>
-              <p>
-                <a
-                  href="https://www.canada.ca/en/immigration-refugees-citizenship/corporate/publications-manuals/annual-report-parliament-immigration-2024.html"
-                  >IRCC annual immigration reporting ↗</a
-                >
-              </p>
-            </div>
-          </details>
-          <details id="source-costs">
-            <summary>
-              <span>02</span> Domestic programme costs
-              <span aria-hidden="true">+</span>
-            </summary>
-            <div class="source-body">
-              <p>
-                IRCC committee briefs on asylum support, October–December 2025;
-                IRCC settlement and departmental materials, 2025–26.
-              </p>
-              <p>
-                Hotel costs cover April 2020–September 2025. Interim Housing
-                Assistance is cumulative since 2017, as of October 31, 2025.
-                Interim Federal Health Program spending covers 2024–25.
-                Settlement services are planned funding for 2025–26 outside
-                Quebec.
-              </p>
-              <p>
-                These programmes have different scopes, beneficiaries and
-                periods. No combined cost is calculated. Settlement funding is
-                not an asylum-only programme.
-              </p>
-            </div>
-          </details>
-          <details id="source-removals">
-            <summary>
-              <span>03</span> Removal cost recovery
-              <span aria-hidden="true">+</span>
-            </summary>
-            <div class="source-body">
-              <p>
-                CBSA / Canada Gazette: removal cost-recovery regulations,
-                SOR/2024-284, in force April 2025.
-              </p>
-              <p>
-                C$3,840 and C$12,880 are cost-recovery fees, not the full cost
-                of enforcement. They cannot be used as a like-for-like
-                alternative to the programme spending above.
-              </p>
-            </div>
-          </details>
-          <details id="source-abroad">
-            <summary>
-              <span>04</span> Ukraine: commitments &amp; guarantees
-              <span aria-hidden="true">+</span>
-            </summary>
-            <div class="source-body">
-              <p>
-                Canadian government announcements: Halifax, December 2025;
-                Calgary, September 2026. Financial Times reporting on Canada's
-                discussions concerning the EU-led Ukraine Support Loan.
-              </p>
-              <p>
-                The cumulative assistance figure includes different financial
-                instruments. Selected announcements may already be included. A
-                guarantee is contingent exposure, not current expenditure; a
-                concessional loan is not the same instrument as a grant.
-              </p>
-              <p>
-                The EU proposal is unsigned as described in the September 2026
-                reporting. No Canadian share is assigned here. The home
-                comparison divides C$26 billion by C$700,000 and rounds to
-                approximately 37,000; it is illustrative arithmetic, not a
-                housing delivery estimate.
-              </p>
-            </div>
-          </details>
-        </div>
-      </section>
-      <section class="closing" aria-labelledby="closing-title">
-        <div class="wrap closing-inner">
-          <div>
-            <p class="kicker">Canada first. Always.</p>
-            <h2 id="closing-title">
-              Borders. Housing.<br />The national chequebook.
-            </h2>
-            <p>They are not optional.</p>
-          </div>
-          <div class="closing-action">
-            <a class="btn" href="https://x.com/ReformTheNorth"
-              >Stand with Canada <span aria-hidden="true">↗</span></a
-            ><span>Follow @ReformTheNorth on X</span>
-          </div>
-        </div>
-      </section>
-    </main>
-    <footer class="site-footer wrap">
-      <div class="footer-main">
-        <a
-          class="brand brand--footer"
-          href="#top"
-          aria-label="Reform the North — back to top"
-          ><img
-            class="brand-mark"
-            src="assets/brand/mark.svg"
-            width="72"
-            height="72"
-            alt=""
-          /><span class="brand-name">Reform the North</span></a
-        >
-        <p class="footer-fr" lang="fr">« Le Canada n’est pas un hôtel. »</p>
-      </div>
-      <div class="footer-bottom">
-        <p>
-          A civic project, not a registered party.<br /><span
-            >reformthenorth.com · Canada</span
-          >
-        </p>
-        <nav aria-label="Footer navigation">
-          <a href="#sources">Sources &amp; definitions</a
-          ><a href="https://x.com/ReformTheNorth">Follow on X ↗</a
-          ><a href="#top">Back to top ↑</a>
-        </nav>
-      </div>
-    </footer>
-    <script src="site.js?v=broadsheet-20260917" defer></script>
-  </body>
-</html>
