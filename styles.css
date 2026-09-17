@@ -276,18 +276,79 @@ a:hover {
   overflow-wrap: break-word;
 }
 
-.hero-ground {
+.hero-field {
   margin: 0;
-  position: relative;
-  background: #1a2428;
+  padding: 2.75rem 0 3.25rem;
+  background: var(--ink);
+  color: var(--raised);
 }
 
-.hero-ground img {
+.hero-field-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.15rem;
+  max-width: 36rem;
+}
+
+.hero-mark-lg {
   display: block;
-  width: 100%;
-  height: min(68vh, 40rem);
-  object-fit: cover;
-  object-position: center 40%;
+  width: min(42vw, 9rem);
+  height: min(42vw, 9rem);
+  max-width: 160px;
+  max-height: 160px;
+  flex: 0 0 auto;
+}
+
+.hero-mission-title {
+  margin: 0.35rem 0 0;
+  font-family: var(--display);
+  font-size: clamp(1.85rem, 1rem + 3.2vw, 2.75rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: var(--raised);
+  text-wrap: balance;
+}
+
+.hero-mission {
+  display: grid;
+  gap: 0.65rem;
+  max-width: 40ch;
+}
+
+.hero-mission p {
+  margin: 0;
+  font-size: 1.0625rem;
+  line-height: 1.5;
+  color: var(--raised);
+}
+
+.hero-frame {
+  margin: 0.5rem 0 0;
+  color: var(--pewter);
+  font-family: var(--sans);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+@media (min-width: 600px) {
+  .hero-field {
+    padding: 3.5rem 0 4rem;
+  }
+
+  .hero-mark-lg {
+    width: 10rem;
+    height: 10rem;
+  }
+
+  .hero-field-inner {
+    gap: 1.35rem;
+  }
 }
 
 @media (max-width: 519px) {

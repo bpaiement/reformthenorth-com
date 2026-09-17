@@ -18,7 +18,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&amp;family=Playfair+Display:ital,wght@0,400;0,500;1,400&amp;display=swap">
-    <link rel="stylesheet" href="styles.css?v=7761f8d1db">
+    <link rel="stylesheet" href="styles.css?v=c9a0f29541">
   </head>
   <body>
     <a class="skip" href="#main">Skip to content</a>
@@ -46,9 +46,20 @@
             <h1 class="brand-name">Reform the North</h1>
           </div>
         </div>
-        <figure class="hero-ground">
-          <img src="assets/wilderness.jpg" alt="Jasper country. A turquoise lake, a small island of spruce, and mountains beyond." width="1600" height="900">
-        </figure>
+        <div class="hero-field">
+          <div class="wrap hero-field-inner">
+            <svg class="hero-mark-lg" width="160" height="160" viewBox="0 0 48 48" aria-hidden="true" focusable="false">
+              <rect width="48" height="48" fill="#F4EFE6"/>
+              <path fill="#0B1C2C" d="M24.0 2.8 C 25.35 18.60, 29.40 22.65, 40.9 24.0 C 29.40 25.35, 25.35 29.40, 24.0 45.2 C 22.65 29.40, 18.60 25.35, 7.1 24.0 C 18.60 22.65, 22.65 18.60, 24.0 2.8 Z"/>
+            </svg>
+            <h2 class="hero-mission-title">Canada first. Always.</h2>
+            <div class="hero-mission">
+              <p>We exist to put Canadians ahead of foreign interests, foreign labour schemes, and foreign wars.</p>
+              <p>Borders, housing, and the national chequebook are not optional.</p>
+            </div>
+            <p class="hero-frame">A civic project, not a registered party.</p>
+          </div>
+        </div>
       </section>
 
       <section class="lede" id="case">
@@ -214,26 +225,26 @@
         var header = document.querySelector(".site-header");
         var hero = document.querySelector(".hero");
         var mast = document.querySelector(".brand-mast");
-        var photo = document.querySelector(".hero-ground");
-        if (!header || !hero || !mast || !photo) return;
+        var field = document.querySelector(".hero-field");
+        if (!header || !hero || !mast || !field) return;
 
         var reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
 
         function syncChrome() {
-          var photoRect = photo.getBoundingClientRect();
+          var fieldRect = field.getBoundingClientRect();
           var mastRect = mast.getBoundingClientRect();
-          var photoGone = photoRect.bottom < 12;
-          header.classList.toggle("is-on", photoGone);
+          var fieldGone = fieldRect.bottom < 12;
+          header.classList.toggle("is-on", fieldGone);
 
           var opacity = 0;
-          if (!photoGone) {
+          if (!fieldGone) {
             var fadeRange = Math.max(mastRect.height * 1.4, 96);
             var scrolled = Math.max(0, -mastRect.top);
             opacity = Math.max(0, Math.min(1, 1 - scrolled / fadeRange));
           }
 
           if (reduce.matches) {
-            mast.style.setProperty("--mast-opacity", photoGone ? "0" : "1");
+            mast.style.setProperty("--mast-opacity", fieldGone ? "0" : "1");
           } else {
             mast.style.setProperty("--mast-opacity", String(opacity));
           }

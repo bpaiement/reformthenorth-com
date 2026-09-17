@@ -3,6 +3,12 @@
 **Owner:** stead (voice) · Brian (values)  
 **Status:** final (stead, 2026-09-16) — one-col lede, flooding at-home, abroad guarantees with two spend weights
 
+## Mission (hero field, under big mark)
+- **Title:** Canada first. Always.
+- **Purpose p1:** We exist to put Canadians ahead of foreign interests, foreign labour schemes, and foreign wars.
+- **Purpose p2:** Borders, housing, and the national chequebook are not optional.
+- **Civic frame:** A civic project, not a registered party.
+
 ## Lede
 - **Title line 1:** Canada needs reform.
 - **Title line 2:** It is not too late.
