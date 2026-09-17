@@ -10,3 +10,7 @@ Static site for [reformthenorth.com](https://reformthenorth.com).
 4. Add custom domain `reformthenorth.com` (and `www` if you use it).
 
 The `CNAME` file is for GitHub Pages. If you host on Cloudflare Pages you can ignore it.
+
+## Brand
+
+See [BRAND.md](BRAND.md) before changing UI. Copy strings live in [COPY.md](COPY.md).
