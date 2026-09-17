@@ -230,8 +230,8 @@ a:hover {
 .brand-mast {
   position: relative;
   z-index: 2;
-  background: var(--paper);
-  color: var(--ink);
+  background: #f4efe6;
+  color: #0b1c2c;
   border-bottom: 1px solid var(--pewter);
   opacity: var(--mast-opacity, 1);
   transition: opacity 0.3s ease;
@@ -242,15 +242,20 @@ a:hover {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.85rem;
-  padding: 1.6rem 0 1.45rem;
+  gap: 0.75rem;
+  padding: 1.35rem 0 1.25rem;
   text-align: center;
+  background: transparent;
 }
 
 .brand-mark {
-  width: clamp(2.5rem, 6.5vw, 3.5rem);
-  height: clamp(2.5rem, 6.5vw, 3.5rem);
-  flex-shrink: 0;
+  display: block;
+  width: 40px;
+  height: 40px;
+  max-width: 40px;
+  max-height: 40px;
+  flex: 0 0 40px;
+  overflow: visible;
 }
 
 .brand-name {
@@ -262,7 +267,8 @@ a:hover {
   font-weight: 400;
   letter-spacing: -0.02em;
   line-height: 1.08;
-  color: var(--ink);
+  color: #0b1c2c;
+  background: transparent;
   overflow-wrap: break-word;
 }
 
@@ -282,12 +288,19 @@ a:hover {
 
 @media (max-width: 519px) {
   .brand-mast-inner {
-    gap: 0.7rem;
-    padding: 1.35rem 0 1.25rem;
+    gap: 0.65rem;
+    padding: 1.2rem 0 1.1rem;
+  }
+
+  .brand-mark {
+    width: 40px;
+    height: 40px;
+    max-width: 40px;
   }
 
   .brand-name {
     white-space: normal;
+    color: #0b1c2c;
   }
 }
 
