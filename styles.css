@@ -178,6 +178,7 @@ a:hover {
 .header-inner {
   display: flex;
   align-items: center;
+  justify-content: center;
   min-height: var(--header-h);
   padding-top: 0.6rem;
   padding-bottom: 0.6rem;
@@ -239,12 +240,13 @@ a:hover {
 
 .brand-mast-inner {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: flex-start;
   justify-content: center;
-  gap: 0.75rem;
+  gap: 0.75rem 0.9rem;
   padding: 1.35rem 0 1.25rem;
-  text-align: center;
+  text-align: left;
   background: transparent;
 }
 
@@ -255,13 +257,14 @@ a:hover {
   max-width: 40px;
   max-height: 40px;
   flex: 0 0 40px;
+  margin-top: 0.15em;
   overflow: visible;
 }
 
 .brand-name {
   margin: 0;
   min-width: 0;
-  max-width: 100%;
+  max-width: 14ch;
   font-family: var(--display);
   font-size: clamp(1.85rem, 1rem + 4vw, 3.1rem);
   font-weight: 400;
@@ -269,6 +272,7 @@ a:hover {
   line-height: 1.08;
   color: #0b1c2c;
   background: transparent;
+  text-align: left;
   overflow-wrap: break-word;
 }
 
@@ -288,7 +292,8 @@ a:hover {
 
 @media (max-width: 519px) {
   .brand-mast-inner {
-    gap: 0.65rem;
+    flex-direction: row;
+    gap: 0.65rem 0.75rem;
     padding: 1.2rem 0 1.1rem;
   }
 
@@ -299,6 +304,7 @@ a:hover {
   }
 
   .brand-name {
+    max-width: 11ch;
     white-space: normal;
     color: #0b1c2c;
   }
@@ -312,6 +318,7 @@ a:hover {
   }
 
   .brand-name {
+    max-width: none;
     white-space: nowrap;
     overflow-wrap: normal;
   }
