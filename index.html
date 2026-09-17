@@ -35,16 +35,18 @@
 
     <main id="main">
       <section class="hero" id="top" aria-label="Reform the North">
+        <div class="brand-mast">
+          <div class="wrap brand-mast-inner">
+            <svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true" focusable="false">
+              <rect width="48" height="48" fill="#0B1C2C"/>
+              <path fill="#F4EFE6" d="M24 3.2C24 21.6 26.4 24 44.8 24C26.4 24 24 26.4 24 44.8C24 26.4 21.6 24 3.2 24C21.6 24 24 21.6 24 3.2Z"/>
+            </svg>
+            <h1 class="brand-name">Reform the North</h1>
+          </div>
+        </div>
         <figure class="hero-ground">
           <img src="assets/wilderness.jpg" alt="Jasper country. A turquoise lake, a small island of spruce, and mountains beyond." width="1600" height="900">
         </figure>
-        <div class="hero-lockup">
-          <svg class="hero-mark" viewBox="0 0 48 48" aria-hidden="true" focusable="false">
-            <rect width="48" height="48" fill="#0B1C2C"/>
-            <path fill="#F4EFE6" d="M24 3.2C24 21.6 26.4 24 44.8 24C26.4 24 24 26.4 24 44.8C24 26.4 21.6 24 3.2 24C21.6 24 24 21.6 24 3.2Z"/>
-          </svg>
-          <h1 class="hero-name">Reform the North</h1>
-        </div>
       </section>
 
       <section class="lede" id="case">
@@ -209,27 +211,29 @@
       (function () {
         var header = document.querySelector(".site-header");
         var hero = document.querySelector(".hero");
-        var lockup = document.querySelector(".hero-lockup");
-        if (!header || !hero || !lockup) return;
+        var mast = document.querySelector(".brand-mast");
+        var photo = document.querySelector(".hero-ground");
+        if (!header || !hero || !mast || !photo) return;
 
         var reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
 
         function syncChrome() {
-          var rect = hero.getBoundingClientRect();
-          var photoGone = rect.bottom < 12;
+          var photoRect = photo.getBoundingClientRect();
+          var mastRect = mast.getBoundingClientRect();
+          var photoGone = photoRect.bottom < 12;
           header.classList.toggle("is-on", photoGone);
 
           var opacity = 0;
           if (!photoGone) {
-            var fadeRange = Math.max(rect.height * 0.42, 120);
-            var scrolled = Math.max(0, -rect.top);
+            var fadeRange = Math.max(mastRect.height * 1.4, 96);
+            var scrolled = Math.max(0, -mastRect.top);
             opacity = Math.max(0, Math.min(1, 1 - scrolled / fadeRange));
           }
 
           if (reduce.matches) {
-            lockup.style.setProperty("--lockup-opacity", photoGone ? "0" : "1");
+            mast.style.setProperty("--mast-opacity", photoGone ? "0" : "1");
           } else {
-            lockup.style.setProperty("--lockup-opacity", String(opacity));
+            mast.style.setProperty("--mast-opacity", String(opacity));
           }
         }
 
