@@ -34,20 +34,29 @@
   if (document.fonts) document.fonts.ready.then(scheduleChrome);
   syncChrome();
 
+  // gazette-20261001-opus1 — the head boot script arms .motion-intro/.motion-go;
+  // this file only releases it (end, restored scroll, reduced motion, print).
   let reveals;
   const root = document.documentElement;
+  function endIntro() {
+    root.classList.remove("motion-intro", "motion-go");
+  }
   function showAll() {
     reveals?.disconnect();
-    root.classList.remove("motion-intro");
+    endIntro();
     document.querySelectorAll(".beat-pending, .beat-enter").forEach((el) => {
       el.classList.remove("beat-pending", "beat-enter");
     });
   }
 
-  // The load sequence belongs only to the top of a fresh page.
-  if (!reducedMotion.matches && window.scrollY === 0 && !location.hash) {
-    root.classList.add("motion-intro");
-  }
+  // The hero rule is the last entrance piece; drop the classes once it settles
+  // so the static layout owns the final frame.
+  hero?.addEventListener("animationend", (event) => {
+    if (event.animationName === "rule-draw" && event.target === hero) endIntro();
+  });
+
+  // The entrance belongs only to the top of a fresh page.
+  if (window.scrollY > 0) endIntro();
 
   if (!reducedMotion.matches && "IntersectionObserver" in window) {
     reveals = new IntersectionObserver((entries) => {

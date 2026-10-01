@@ -12,7 +12,7 @@
 - Footer: civic line + FR « Le Canada n’est pas un hôtel. »
 
 ## Motion
-- Fresh top-of-page entrance: north star settles (650ms), wordmark follows (+120ms), clipped headline lines rise (+300/+460ms), lede follows (+760ms), maple hero rule draws (+1000ms). Complete at 1.65s; ease-out, once, no loops.
+- Fresh top-of-page entrance: huge CANADA drops from above (0–840ms); FIRST bounces in from the left (900–1800ms), squeezing CANADA smaller; ALWAYS rises from below and pushes both upward (1950–2850ms). Final all-caps Playfair stack has the accessible phrase “Canada first. Always.” North star/wordmark entrance retained; lede and maple rule settle by 3s. Once per fresh load at scrollY=0, no loops; static stack without JS or with reduced motion.
 - Mast fades on scroll; inert ink bar enters only after hero clears (300ms slide / 180ms fade). Immediate exit on return; never competing mastheads.
 - Offscreen beats reveal once as a group: maple number ticks down (760ms), heading follows (+90ms / 800ms), lede and supporting text follow (+170/+220ms / 780ms). Entire beat settles within 1s.
 - Pewter section rule draws left to right (900ms), led by a maple tip that returns to the static left accent (950ms).
@@ -22,7 +22,7 @@
 Paper / ink / raised / metal / maple / pewter — unchanged. Playfair + IBM Plex Sans.
 
 ## Files
-`index.html`, `styles.css` (`?v=gazette-20261001-motion1`), `site.js` — local box path `/workspace/rtn/reformthenorth-com/`. Chart/ledger CSS left unused; Front may strip.
+`index.html`, `styles.css` (`?v=gazette-20261001-kinetic1`), `site.js` — local box path `/workspace/rtn/reformthenorth-com/`. Chart/ledger CSS left unused; Front may strip.
 
 ## Out of this pass
 Data bands, charts, dual sticky CTA nav, “Stand with Canada” buttons.

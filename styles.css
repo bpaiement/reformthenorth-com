@@ -192,66 +192,81 @@ a { color: inherit; }
   .ledger-total { font-size: 46px; }
   .ledger-total > span { font-size: 22px; }
 }
-/* Static geometry is shared by animated, reduced-motion and no-JS views. */
+/* ── gazette-20261001-opus1 · kinetic hero + beat motion ──────────────
+   Static first: the final CANADA / FIRST / ALWAYS stack is the normal
+   layout, so no-JS, reduced-motion and print readers get it unchanged.
+   Motion uses individual translate/scale properties so each phase owns
+   one property and phases compose without a shared keyframe clock. */
 .hero { position: relative; }
 .hero::after {
-  content: ""; position: absolute; left: 0; bottom: 24px;
+  content: ""; position: absolute; left: 0; bottom: 28px;
   width: 96px; height: 2px; background: var(--maple);
   transform-origin: left;
 }
-.headline-line { display: inline-block; vertical-align: top; overflow: clip; padding: 0.1em 0.08em; margin: -0.1em -0.08em; }
-.headline-line > span { display: inline-block; }
+.hero h1 { font-size: clamp(44px, 15vw, 156px); line-height: 0.9; letter-spacing: -0.045em; }
+.kinetic-stack { display: block; overflow: clip; overflow-clip-margin: 0.04em; }
+.kinetic-pair, .kinetic-word { display: block; }
+.kinetic-word { width: max-content; transform-origin: 0 80%; }
+.kinetic-always { color: var(--maple); }
 .beat-rule { background: none; }
 .beat-rule::after {
   content: ""; position: absolute; inset: 0; background: var(--pewter);
   transform-origin: left;
 }
 .beat-rule::before { position: absolute; z-index: 1; left: 0; top: 0; }
+
 @media (prefers-reduced-motion: no-preference) {
-  :root { --motion-out: cubic-bezier(0.16, 1, 0.3, 1); }
-  .motion-intro .brand-mast .brand-mark { animation: mark-settle 650ms var(--motion-out) both; }
-  .motion-intro .brand-mast .brand-name { animation: editorial-enter 650ms 120ms var(--motion-out) both; }
-  .motion-intro .headline-line > span { animation: headline-enter 900ms 300ms var(--motion-out) both; }
-  .motion-intro .headline-line:last-child > span { animation-delay: 460ms; }
-  .motion-intro .hero-mission { animation: editorial-enter 750ms 760ms var(--motion-out) both; }
-  .motion-intro .hero::after { animation: rule-draw 650ms 1000ms var(--motion-out) both; }
-  .beat-pending .beat-number, .beat-pending h2, .beat-pending .home-copy > p { opacity: 0; }
-  .beat-pending .beat-rule::after { transform: scaleX(0); }
-  .beat-pending .beat-rule::before { opacity: 0; }
-  .beat-enter .beat-number { animation: number-tick 760ms var(--motion-out) both; }
-  .beat-enter h2 { animation: editorial-enter 800ms 90ms var(--motion-out) both; }
-  .beat-enter .home-copy > p { animation: editorial-enter 780ms 170ms var(--motion-out) both; }
-  .beat-enter .home-copy > p + p { animation-delay: 220ms; }
-  .beat-enter .beat-rule::after { animation: rule-draw 900ms var(--motion-out) both; }
-  .beat-enter .beat-rule::before { animation: maple-tip 950ms var(--motion-out) both; }
-  .site-header.is-on { transition: opacity 180ms ease-out, transform 300ms var(--motion-out); }
-  @keyframes mark-settle {
-    from { opacity: 0; transform: translateY(-12px) scale(0.92) rotate(-5deg); }
-    65% { opacity: 1; }
-    to { opacity: 1; transform: none; }
+  :root {
+    --out: cubic-bezier(0.16, 1, 0.3, 1);
+    --snap: cubic-bezier(0.34, 1.4, 0.64, 1);
+    --line: 0.9em; /* one headline line */
   }
-  @keyframes headline-enter {
-    from { opacity: 0; transform: translateY(108%) rotate(1.5deg); }
-    to { opacity: 1; transform: none; }
+  /* Hold the opening frame until fonts land (set by the head boot script). */
+  .motion-intro:not(.motion-go) .kinetic-stack,
+  .motion-intro:not(.motion-go) .hero-mission { visibility: hidden; }
+
+  /* 1 · CANADA drops in huge (0–700ms). Pair sits one line low until ALWAYS. */
+  .motion-go .kinetic-pair { translate: 0 var(--line); animation: push-up 760ms 1750ms var(--out) both; }
+  .motion-go .kinetic-canada {
+    scale: 1.42;
+    animation: drop 700ms cubic-bezier(0.5, 0, 0.75, 0) both,
+               land 260ms 700ms ease-out forwards,
+               squeeze 620ms 980ms var(--out) both;
   }
-  @keyframes editorial-enter {
-    from { opacity: 0; transform: translateY(28px); }
-    to { opacity: 1; transform: none; }
+  /* 2 · FIRST bounces in from the left (850–1550ms), squeezing CANADA. */
+  .motion-go .kinetic-first { animation: bounce-in 700ms 850ms var(--snap) both; }
+  /* 3 · ALWAYS rises and pushes the pair up (1750–2510ms). */
+  .motion-go .kinetic-always { animation: rise 760ms 1700ms var(--out) both; }
+  /* Settle (2300–2950ms). */
+  .motion-go .brand-mast .brand-mark { animation: fade-up 600ms var(--out) both; }
+  .motion-go .brand-mast .brand-name { animation: fade-up 600ms 100ms var(--out) both; }
+  .motion-go .hero-mission { animation: fade-up 650ms 2300ms var(--out) both; }
+  .motion-go .hero::after { animation: rule-draw 600ms 2350ms var(--out) both; }
+
+  @keyframes drop { from { translate: 0 -2.6em; } to { translate: 0 0.06em; } }
+  @keyframes land { from { translate: 0 0.06em; } 45% { translate: 0 -0.03em; } to { translate: 0 0; } }
+  @keyframes squeeze { from { scale: 1.42; } to { scale: 1; } }
+  @keyframes bounce-in {
+    from { translate: -110% 0; scale: 1; }
+    70% { scale: 0.94 1; }
+    to { translate: 0 0; scale: 1; }
   }
-  @keyframes number-tick {
-    from { opacity: 0; transform: translateY(-14px); }
-    45% { opacity: 1; }
-    to { opacity: 1; transform: none; }
-  }
+  @keyframes push-up { from { translate: 0 var(--line); } to { translate: 0 0; } }
+  @keyframes rise { from { translate: 0 calc(var(--line) * 1.6); } to { translate: 0 0; } }
+  @keyframes fade-up { from { opacity: 0; translate: 0 16px; } to { opacity: 1; translate: 0 0; } }
   @keyframes rule-draw { from { transform: scaleX(0); } to { transform: scaleX(1); } }
-  @keyframes maple-tip {
-    from { left: 0; opacity: 0; transform: scaleX(0.15); }
-    12% { opacity: 1; }
-    80% { left: calc(100% - 64px); opacity: 1; transform: scaleX(1); }
-    90% { left: calc(100% - 64px); opacity: 0; }
-    91% { left: 0; opacity: 0; }
-    to { left: 0; opacity: 1; transform: scaleX(1); }
-  }
+
+  /* Beats: one quiet group reveal, done inside ~900ms. */
+  .beat-pending .beat-number, .beat-pending h2, .beat-pending .home-copy > p { opacity: 0; }
+  .beat-pending .beat-rule::after, .beat-pending .beat-rule::before { transform: scaleX(0); }
+  .beat-enter .beat-rule::after { animation: rule-draw 800ms var(--out) both; }
+  .beat-enter .beat-rule::before { animation: rule-draw 420ms var(--out) both; }
+  .beat-enter .beat-number { animation: fade-up 560ms 60ms var(--out) both; }
+  .beat-enter h2 { animation: fade-up 640ms 120ms var(--out) both; }
+  .beat-enter .home-copy > p { animation: fade-up 640ms 220ms var(--out) both; }
+  .beat-enter .home-copy > p + p { animation-delay: 300ms; }
+
+  .site-header.is-on { transition: opacity 180ms ease-out, transform 300ms var(--out); }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
@@ -261,8 +276,9 @@ a { color: inherit; }
   .brand-mast { opacity: 1 !important; }
   .wrap { width: 100%; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
-  .beat-pending .beat-number, .beat-pending h2, .beat-pending .home-copy > p, .beat-rule::before { opacity: 1 !important; }
-  .beat-rule::after { transform: none !important; }
+  .beat-pending .beat-number, .beat-pending h2, .beat-pending .home-copy > p { opacity: 1 !important; }
+  .beat-rule::before, .beat-rule::after { transform: none !important; }
+  .kinetic-stack, .hero-mission { visibility: visible !important; }
   .hero { padding-block: 32px; }
   .hero h1 { font-size: 64px; }
   .beat { padding-block: 28px; }
