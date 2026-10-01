@@ -1,55 +1,39 @@
-# Reform the North — current design
+# Reform the North — spare winter gazette
 
-Implemented September 17, 2026, at Brian's request. This replaces the photo-era layout in ART-DIRECTION.md. BRAND.md remains the colour, typography, mark and voice reference; COPY.md remains the approved editorial copy.
+Implemented October 1, 2026, from Brian’s locked simpler-redesign brief. BRAND.md supplies the six colour tokens, typography and north-star geometry; COPY.md and the existing index.html supply the approved language and figures. The current brief supersedes earlier CTA and navigation directions.
 
 ## Composition
 
-A paper civic broadsheet with a left-aligned typographic mission. The canonical north-star tile appears in the mast, compact sticky lockup and footer; there is no redundant hero-field mark.
+One cream mast, one hero and three beats. The mast pairs the canonical ink-square north star with the Playfair wordmark, always horizontally, with the quiet X text link. The hero reads “Canada first. Always.” with one locked mission paragraph.
 
-Sequence: mast → mission and reading index → political thesis → intake → domestic programme costs → overseas commitments and guarantees → sources and definitions → Stand with Canada → footer.
+The three copy-locked beats are Heritage before slogan, Assimilation is the line, and Remigration where needed. Each pairs its maple number and Playfair heading with a lede and supporting paragraph. No charts, ledgers, data bands, navigation menus or CTA buttons.
 
-The original mission, political thesis, flood framing, primary CTA and French footer are retained. No new policy platform or signup system has been invented. The final callout uses the approved borders, housing and national-chequebook language.
+The minimal footer contains the canonical mark, civic-project line and French line. All wording remains exactly as supplied in index.html.
 
-## Tokens and dimensions
+## Visual system
 
-- Exact six colours in BRAND.md. Paper throughout, raised for the cost ledger, ink for the compact header and concluding action. Maple only for actions, the chart peak, the sticky rule and guarantee ticks.
-- Playfair Display for titles and wordmark; IBM Plex Sans for body, UI and numbers.
-- Maximum content width: 1200px. Gutters: 48px desktop, 32px tablet, 20px mobile, 16px below 360px.
-- Mast mark: 72px desktop, 64px mobile. Compact header mark: 32px desktop, 28px mobile. The wordmark may wrap in the main mobile mast; the mark always stays at its left, vertically centred.
-- Desktop hero headline: up to 104px. Phone headline: 47–72px. The two approved headline phrases remain on separate lines.
-- Main section rhythm: 88px desktop / 56px mobile. Rules and spacing organise content; no card chrome or decorative gradients.
-- Responsive bands: under 768px, 768–1023px, and 1024px upward. Cost ledger is four columns on wide desktop, two on tablet, one on phone.
+- Paper `#f4efe6`, ink `#0b1c2c`, raised `#fbf8f2`, metal `#6b6459`, pewter `#8a8378`, maple `#9b2335`.
+- Playfair Display for headline, section titles, wordmark and French footer. IBM Plex Sans for body, labels and figures. Google Fonts with local serif/sans fallbacks; no build step.
+- Content width up to 1120px; fluid gutters, 20px on phones and 16px below 360px. Desktop beat content has a 100px inset, reduced on tablets and removed on phones.
+- Mast mark 80px desktop / 64px phone, always left of the wordmark. The name may wrap on phones. Compact bar mark 32px; footer mark 40px.
+- Hero headline up to 132px, section titles up to 64px. Generous paper space, fine pewter rules and small maple beat numbers. No gradients, glass, shadows, rounded cards or imagery.
+- Beat text uses two columns on desktop and stacks below 641px.
 
-## Interaction
+## Motion and progressive enhancement
+- Fresh top-of-page entrance: north star settles (650ms), wordmark follows (+120ms), clipped headline lines rise (+300/+460ms), lede follows (+760ms), maple hero rule draws (+1000ms). Complete at 1.65s; ease-out, once, no loops.
+- Mast fades on scroll; inert ink bar enters only after hero clears (300ms slide / 180ms fade). Immediate exit on return; never competing mastheads.
+- Offscreen beats reveal once as a group: maple number ticks down (760ms), heading follows (+90ms / 800ms), lede and supporting text follow (+170/+220ms / 780ms). Entire beat settles within 1s.
+- Pewter section rule draws left to right (900ms), led by a maple tip that returns to the static left accent (950ms).
+- Reduced motion is instant/static on load and on live preference changes, including mast opacity. No-JS content is visible. Print releases pending reveals. Restored scroll/deep links preserve earlier content; no replay when motion is re-enabled.
 
-The sticky header becomes visible only when `.hero.getBoundingClientRect().bottom <= 0`. It is otherwise inert and aria-hidden. Focus inside the header or an open header menu keeps it visible until that interaction finishes. No scroll-direction heuristic is used.
+Motion uses CSS transforms, opacity and clipped headline spans, with no library. A passive scroll listener batches chrome geometry through requestAnimationFrame; resize, font settlement, pageshow and hash changes keep the boundary accurate. IntersectionObserver arms only offscreen sections. All animation and pending-state styles are gated by `prefers-reduced-motion: no-preference`; disabling motion disconnects the observer and releases pending content. Copy remains in the document, with the original headline line break preserved.
 
-Scroll updates are coalesced with requestAnimationFrame. ResizeObserver, font settlement, pageshow and hash navigation keep the geometry correct. Reduced motion disables animated transitions and smooth scrolling.
+## Provenance and verification
 
-Native mobile disclosures work without JavaScript. With JavaScript, opening one menu closes its sibling; Escape closes it and restores trigger focus; clicking a navigation link closes the menu and moves focus to its target. Internal source links open the correct source disclosure. Every primary action points to the existing X account.
+This is a presentation change to the locked copy pack. No new wording, statistics or sections are introduced. CSS/JS cache keys are `gazette-20261001-motion1`.
 
-## Evidence presentation and provenance
+Check direct file opening and static HTTP serving, 320/390/640/768/1024/1440px layouts, horizontal overflow, horizontal mark lockups, the exact hero/sticky boundary, once-only scroll reveals, preference changes, reduced motion, printing and JavaScript-disabled reading. Keep CNAME, favicon and assets/brand intact. Version both stylesheet and script query parameters in index.html.
 
-This is a layout and clarity change, not a new data release. Existing figures and attributions were retained from the main-branch index.html and COPY.md at commit 3efa8c77a8473a59c71887494cb4d34f8c204199. The site does not claim a new figure-verification date.
+Verified in headless Chrome on October 1, 2026: all six listed widths fit without horizontal overflow and preserve the horizontal mast lockup; the sticky bar switches at the hero boundary in both directions; scroll reveals animate once and finish; reduced motion works on load and after a live preference change; print reveals pending content; direct file opening works with JavaScript disabled. Desktop and phone screenshots were visually reviewed. JavaScript syntax, unique IDs, local asset paths, versioned CSS/JS URLs, zero CTA/navigation markup and `git diff --check` also pass. CNAME, favicon and brand assets are unchanged.
 
-The original sixteen annual chart bar lengths are retained proportionally, from the original SVG heights. They are rendered as desktop columns or chronological phone rows. The existing 2010 and 2024 headline values are the only numeric bar labels; no precise annual counts were inferred from pixels. The axis remains zero-based and labels stay outside the marks. An exact machine-readable series and fully linked primary-source audit should precede any future numerical update.
-
-All four existing domestic cost entries remain. Each now identifies its programme and reporting period. The planned settlement appropriation is labelled planned, and settlement funding is explicitly distinguished from asylum-only funding. The programmes are not summed. Removal recovery fees are not presented as the full cost of enforcement.
-
-Committed assistance and contingent guarantees have separate ledgers. Selected commitments are not added to the cumulative assistance headline. The unsigned EU proposal has a separate notice and is not classified as an executed Canadian guarantee. The housing comparison is explicitly illustrative arithmetic. The 100-year statement is a closing line, not another ledger item.
-
-Existing source attributions are collected in visible, accessible disclosures. The IRCC annual-report link is a reporting reference, not a claim that a 2024 report substantiates every later figure. Exact publication URLs for the newer cost and Ukraine figures were not supplied in the repo; the preserved attributions do not imply they have been independently reverified during this design pass.
-
-## Five rules
-
-1. One dominant subject per screen. The hero states the mission, not the logo a second time.
-2. Keep measure, unit, period and financial status with each figure. Never sum commitments and contingent exposure indiscriminately.
-3. The canonical mark always sits left of the wordmark, never above it.
-4. Use type, spacing and rules for hierarchy. Reserve maple; never add SaaS cards, glass or decorative gradients.
-5. Reflow for phones. Chart labels remain outside bars; financial categories stay visible; navigation never produces two competing mastheads.
-
-## Release checks
-
-Check markup, local assets, anchors, JavaScript syntax, header boundary/focus/resize behaviour, reduced motion, and menu/source-link behaviour. Inspect 320, 390, 768, 1024 and 1440px layouts when a browser preview is available. Run a final diff and use a non-forced fast-forward push to main, preserving concurrent changes.
-
-There is no framework or build dependency. Cloudflare Pages continues to serve the static root. Domain files, middleware and brand assets are unchanged. CSS and JavaScript URLs are versioned in index.html.
+Motion pass verification: HTML text nodes compared against the pre-motion working copy with exact equality. Chrome checks passed at 320/390/640/768/1024/1440px, including sticky boundary in both directions, staggered once-only reveals, hero animation hooks, reduced motion on load and live cancellation (zero active animations), print and no-JS direct-file reading. Desktop and phone screenshots reviewed. JavaScript syntax and whitespace checks passed.

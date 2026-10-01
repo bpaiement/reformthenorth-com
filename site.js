@@ -35,26 +35,34 @@
   syncChrome();
 
   let reveals;
+  const root = document.documentElement;
   function showAll() {
     reveals?.disconnect();
-    document.querySelectorAll(".reveal-pending").forEach((el) => {
-      el.classList.remove("reveal-pending");
+    root.classList.remove("motion-intro");
+    document.querySelectorAll(".beat-pending, .beat-enter").forEach((el) => {
+      el.classList.remove("beat-pending", "beat-enter");
     });
+  }
+
+  // The load sequence belongs only to the top of a fresh page.
+  if (!reducedMotion.matches && window.scrollY === 0 && !location.hash) {
+    root.classList.add("motion-intro");
   }
 
   if (!reducedMotion.matches && "IntersectionObserver" in window) {
     reveals = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
-        entry.target.classList.remove("reveal-pending");
+        entry.target.classList.remove("beat-pending");
+        entry.target.classList.add("beat-enter");
         reveals.unobserve(entry.target);
       });
     }, { threshold: 0, rootMargin: "0px 0px -32px 0px" });
 
-    document.querySelectorAll("[data-reveal]").forEach((el) => {
+    document.querySelectorAll(".beat").forEach((el) => {
       // Restored scroll positions and deep links never hide earlier content.
       if (el.getBoundingClientRect().top < window.innerHeight - 32) return;
-      el.classList.add("reveal-pending");
+      el.classList.add("beat-pending");
       reveals.observe(el);
     });
   }
@@ -62,6 +70,9 @@
   reducedMotion.addEventListener("change", () => {
     if (reducedMotion.matches) showAll();
     scheduleChrome();
+  });
+  window.addEventListener("pageshow", (event) => {
+    if (event.persisted || window.scrollY > 0) showAll();
   });
   window.addEventListener("beforeprint", showAll);
   document.addEventListener("beforematch", showAll);
