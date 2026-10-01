@@ -1,128 +1,68 @@
-/* Progressive enhancement: all content and primary navigation work without JS. */
+/* Static content first; motion is a one-time enhancement. */
 (() => {
   "use strict";
   const header = document.querySelector(".site-header");
   const hero = document.querySelector(".hero");
   const mast = document.querySelector(".brand-mast");
-  if (!header || !hero || !mast) return;
-  const menus = [...document.querySelectorAll(".mobile-menu")];
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-  const desktop = window.matchMedia("(min-width: 768px)");
-  let pending = false;
+  let frame = 0;
 
   function syncChrome() {
-    pending = false;
+    frame = 0;
+    if (!header || !hero || !mast) return;
     const heroPassed = hero.getBoundingClientRect().bottom <= 0;
-    // Keep keyboard focus and an open menu visible until the interaction finishes.
-    const headerInUse =
-      header.contains(document.activeElement) ||
-      !!header.querySelector(".mobile-menu[open]");
-    const visible = heroPassed || headerInUse;
-    header.classList.toggle("is-on", visible);
-    header.inert = !visible;
-    header.setAttribute("aria-hidden", String(!visible));
-    const mastRect = mast.getBoundingClientRect();
-    const mastInUse =
-      mast.contains(document.activeElement) ||
-      !!mast.querySelector(".mobile-menu[open]");
-    const opacity = mastInUse
-      ? 1
-      : visible
-        ? 0
-        : reducedMotion.matches
-          ? 1
-          : Math.max(0, Math.min(1, mastRect.bottom / mastRect.height));
-    mast.style.setProperty("--mast-opacity", String(opacity));
+    header.classList.toggle("is-on", heroPassed);
+    // The compact bar repeats the mast and has no interactive controls.
+    const rect = mast.getBoundingClientRect();
+    mast.style.setProperty("--mast-opacity", reducedMotion.matches ? "1" :
+      String(Math.max(0, Math.min(1, rect.bottom / rect.height))));
   }
-  function scheduleSync() {
-    if (!pending) {
-      pending = true;
-      window.requestAnimationFrame(syncChrome);
-    }
+
+  function scheduleChrome() {
+    if (!frame) frame = window.requestAnimationFrame(syncChrome);
   }
-  function closeMenus(except) {
-    menus.forEach((menu) => {
-      if (menu !== except) menu.open = false;
-    });
+
+  window.addEventListener("scroll", scheduleChrome, { passive: true });
+  window.addEventListener("resize", scheduleChrome);
+  window.addEventListener("pageshow", scheduleChrome);
+  window.addEventListener("hashchange", scheduleChrome);
+  if ("ResizeObserver" in window && hero && mast) {
+    const geometry = new ResizeObserver(scheduleChrome);
+    geometry.observe(hero);
+    geometry.observe(mast);
   }
-  function revealHash() {
-    let id;
-    try {
-      id = decodeURIComponent(window.location.hash.slice(1));
-    } catch (_) {
-      return;
-    }
-    const target = document.getElementById(id);
-    if (target?.matches(".source-records details")) {
-      target.open = true;
-      window.requestAnimationFrame(() =>
-        target.scrollIntoView({ block: "start" }),
-      );
-    }
-    scheduleSync();
-  }
-  menus.forEach((menu) => {
-    menu.addEventListener("toggle", () => {
-      menu
-        .querySelector("summary")
-        .setAttribute(
-          "aria-label",
-          menu.open ? "Close navigation" : "Open navigation",
-        );
-      if (menu.open) closeMenus(menu);
-      scheduleSync();
-    });
-  });
-  document.addEventListener("keydown", (event) => {
-    if (event.key !== "Escape") return;
-    const openMenu = menus.find((menu) => menu.open);
-    if (openMenu) {
-      openMenu.open = false;
-      openMenu.querySelector("summary").focus({ preventScroll: true });
-      scheduleSync();
-    }
-  });
-  document.addEventListener("click", (event) => {
-    if (!(event.target instanceof Element)) return;
-    const link = event.target.closest('a[href^="#"]');
-    if (link) {
-      let id;
-      try {
-        id = decodeURIComponent(link.getAttribute("href").slice(1));
-      } catch (_) {
-        return;
-      }
-      const target = document.getElementById(id);
-      if (target) {
-        if (target.matches(".source-records details")) target.open = true;
-        if (!target.hasAttribute("tabindex"))
-          target.setAttribute("tabindex", "-1");
-        // Move focus out of the header before it becomes inert on a return to top.
-        target.focus({ preventScroll: true });
-      }
-      closeMenus();
-    } else if (!event.target.closest(".mobile-menu")) {
-      closeMenus();
-    }
-    scheduleSync();
-  });
-  document.addEventListener("focusin", scheduleSync);
-  document.addEventListener("focusout", scheduleSync);
-  window.addEventListener("scroll", scheduleSync, { passive: true });
-  window.addEventListener("resize", scheduleSync);
-  window.addEventListener("pageshow", scheduleSync);
-  window.addEventListener("hashchange", revealHash);
-  reducedMotion.addEventListener("change", scheduleSync);
-  desktop.addEventListener("change", () => {
-    closeMenus();
-    scheduleSync();
-  });
-  if ("ResizeObserver" in window) {
-    const observer = new ResizeObserver(scheduleSync);
-    observer.observe(hero);
-    observer.observe(mast);
-  }
-  if (document.fonts) document.fonts.ready.then(scheduleSync);
-  revealHash();
+  if (document.fonts) document.fonts.ready.then(scheduleChrome);
   syncChrome();
+
+  let reveals;
+  function showAll() {
+    reveals?.disconnect();
+    document.querySelectorAll(".reveal-pending").forEach((el) => {
+      el.classList.remove("reveal-pending");
+    });
+  }
+
+  if (!reducedMotion.matches && "IntersectionObserver" in window) {
+    reveals = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.remove("reveal-pending");
+        reveals.unobserve(entry.target);
+      });
+    }, { threshold: 0, rootMargin: "0px 0px -32px 0px" });
+
+    document.querySelectorAll("[data-reveal]").forEach((el) => {
+      // Restored scroll positions and deep links never hide earlier content.
+      if (el.getBoundingClientRect().top < window.innerHeight - 32) return;
+      el.classList.add("reveal-pending");
+      reveals.observe(el);
+    });
+  }
+
+  reducedMotion.addEventListener("change", () => {
+    if (reducedMotion.matches) showAll();
+    scheduleChrome();
+  });
+  window.addEventListener("beforeprint", showAll);
+  document.addEventListener("beforematch", showAll);
 })();
