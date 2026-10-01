@@ -30,7 +30,17 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&amp;family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&amp;display=swap"
     />
-    <link rel="stylesheet" href="styles.css?v=gazette-20261001-motion1" />
+    <link rel="stylesheet" href="styles.css?v=gazette-20261001-opus1" />
+    <!-- gazette-20261001-opus1: arm the hero entrance before first paint; start once fonts settle (800ms cap). -->
+    <script>
+      (function (d, w) {
+        if (w.matchMedia("(prefers-reduced-motion: reduce)").matches || location.hash) return;
+        var r = d.documentElement, go = function () { r.classList.add("motion-go"); };
+        r.classList.add("motion-intro");
+        if (d.fonts && d.fonts.ready) d.fonts.ready.then(go);
+        setTimeout(go, 800);
+      })(document, window);
+    </script>
   </head>
   <body>
     <a class="skip" href="#main">Skip to content</a>
@@ -49,7 +59,15 @@
     </header>
     <main id="main" tabindex="-1">
       <section class="hero wrap" aria-labelledby="mission-title">
-        <h1 id="mission-title"><span class="headline-line"><span>Canada first.</span></span><br /><span class="headline-line"><span>Always.</span></span></h1>
+        <h1 id="mission-title" aria-label="Canada first. Always.">
+          <span class="kinetic-stack" aria-hidden="true">
+            <span class="kinetic-pair">
+              <span class="kinetic-word kinetic-canada">CANADA</span>
+              <span class="kinetic-word kinetic-first">FIRST</span>
+            </span>
+            <span class="kinetic-word kinetic-always">ALWAYS</span>
+          </span>
+        </h1>
         <div class="hero-mission">
           <p>Canada needs to reclaim its heritage — the language, law, and culture that made this country work. Borders, housing, and the national chequebook are not optional.</p>
         </div>
@@ -96,6 +114,20 @@
           </div>
         </div>
       </section>
+      <!-- Beat 04 · working copy from Brian's brief; pending copy-agent pass. -->
+      <section class="beat wrap" id="capacity" aria-labelledby="capacity-title">
+        <div class="beat-rule" aria-hidden="true"></div>
+        <div class="beat-heading">
+          <span class="beat-number" aria-hidden="true">04</span>
+          <h2 id="capacity-title">Build Canadian capacity</h2>
+        </div>
+        <div class="beat-body">
+          <div class="home-copy">
+            <p class="lede">Lean on our US neighbours while we rebuild our own infrastructure.</p>
+            <p>Canada’s interest isn’t cutting all ties.</p>
+          </div>
+        </div>
+      </section>
     </main>
     <footer class="site-footer wrap">
       <div class="footer-civic">
@@ -104,6 +136,6 @@
       </div>
       <p class="footer-fr" lang="fr">« Le Canada n’est pas un hôtel. »</p>
     </footer>
-    <script src="site.js?v=gazette-20261001-motion1" defer></script>
+    <script src="site.js?v=gazette-20261001-opus1" defer></script>
   </body>
 </html>

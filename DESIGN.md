@@ -1,14 +1,14 @@
 # Reform the North — spare winter gazette
 
-Implemented October 1, 2026, from Brian’s locked simpler-redesign brief. BRAND.md supplies the six colour tokens, typography and north-star geometry; COPY.md and the existing index.html supply the approved language and figures. The current brief supersedes earlier CTA and navigation directions.
+Implemented October 1, 2026, from Brian’s locked simpler-redesign brief, then the gazette-20261001-opus1 kinetic hero pass. BRAND.md supplies the six colour tokens, typography and north-star geometry. The current brief supersedes earlier CTA, navigation, and clipped-headline motion directions.
 
 ## Composition
 
-One cream mast, one hero and three beats. The mast pairs the canonical ink-square north star with the Playfair wordmark, always horizontally, with the quiet X text link. The hero reads “Canada first. Always.” with one locked mission paragraph.
+One cream mast, one kinetic hero and four beats. The mast pairs the canonical ink-square north star with the Playfair wordmark, always horizontally, with the quiet X text link. The hero reads CANADA / FIRST / ALWAYS (accessible label “Canada first. Always.”) with one locked mission paragraph.
 
-The three copy-locked beats are Heritage before slogan, Assimilation is the line, and Remigration where needed. Each pairs its maple number and Playfair heading with a lede and supporting paragraph. No charts, ledgers, data bands, navigation menus or CTA buttons.
+The copy-locked beats are Heritage before slogan, Assimilation is the line, and Remigration where needed. Beat 04, Build Canadian capacity, is working stub copy from Brian’s brief pending a copy-agent pass. Each pairs its maple number and Playfair heading with a lede and supporting paragraph. No charts, ledgers, data bands, navigation menus or CTA buttons.
 
-The minimal footer contains the canonical mark, civic-project line and French line. All wording remains exactly as supplied in index.html.
+The minimal footer contains the canonical mark, civic-project line and French line. All wording remains exactly as supplied in the opus1 freeze `index.html`.
 
 ## Visual system
 
@@ -16,24 +16,21 @@ The minimal footer contains the canonical mark, civic-project line and French li
 - Playfair Display for headline, section titles, wordmark and French footer. IBM Plex Sans for body, labels and figures. Google Fonts with local serif/sans fallbacks; no build step.
 - Content width up to 1120px; fluid gutters, 20px on phones and 16px below 360px. Desktop beat content has a 100px inset, reduced on tablets and removed on phones.
 - Mast mark 80px desktop / 64px phone, always left of the wordmark. The name may wrap on phones. Compact bar mark 32px; footer mark 40px.
-- Hero headline up to 132px, section titles up to 64px. Generous paper space, fine pewter rules and small maple beat numbers. No gradients, glass, shadows, rounded cards or imagery.
+- Kinetic headline up to 156px, section titles up to 64px. ALWAYS is maple. Generous paper space, fine pewter rules and small maple beat numbers. No gradients, glass, shadows, rounded cards or imagery.
 - Beat text uses two columns on desktop and stacks below 641px.
 
 ## Motion and progressive enhancement
-- Fresh top-of-page entrance: north star settles (650ms), wordmark follows (+120ms), clipped headline lines rise (+300/+460ms), lede follows (+760ms), maple hero rule draws (+1000ms). Complete at 1.65s; ease-out, once, no loops.
+- Head boot script arms `.motion-intro` before first paint and starts `.motion-go` once fonts settle (800ms cap).
+- Static first: the final CANADA / FIRST / ALWAYS stack is the normal layout. Motion uses individual translate/scale properties so each phase owns one property.
+- Fresh top-of-page entrance: CANADA drops huge then lands and squeezes; FIRST bounces in from the left; ALWAYS rises and pushes the pair up; lede and maple hero rule settle by ~3s. Ease-out, once, no loops.
 - Mast fades on scroll; inert ink bar enters only after hero clears (300ms slide / 180ms fade). Immediate exit on return; never competing mastheads.
-- Offscreen beats reveal once as a group: maple number ticks down (760ms), heading follows (+90ms / 800ms), lede and supporting text follow (+170/+220ms / 780ms). Entire beat settles within 1s.
-- Pewter section rule draws left to right (900ms), led by a maple tip that returns to the static left accent (950ms).
+- Offscreen beats reveal once as a group inside ~900ms: pewter rule draws, maple tip, number, heading, then copy.
 - Reduced motion is instant/static on load and on live preference changes, including mast opacity. No-JS content is visible. Print releases pending reveals. Restored scroll/deep links preserve earlier content; no replay when motion is re-enabled.
 
-Motion uses CSS transforms, opacity and clipped headline spans, with no library. A passive scroll listener batches chrome geometry through requestAnimationFrame; resize, font settlement, pageshow and hash changes keep the boundary accurate. IntersectionObserver arms only offscreen sections. All animation and pending-state styles are gated by `prefers-reduced-motion: no-preference`; disabling motion disconnects the observer and releases pending content. Copy remains in the document, with the original headline line break preserved.
+Motion uses CSS transforms, scale and opacity, with no library. A passive scroll listener batches chrome geometry through requestAnimationFrame; resize, font settlement, pageshow and hash changes keep the boundary accurate. IntersectionObserver arms only offscreen sections. All animation and pending-state styles are gated by `prefers-reduced-motion: no-preference`; disabling motion disconnects the observer and releases pending content. Copy remains in the document; the accessible headline is “Canada first. Always.”
 
 ## Provenance and verification
 
-This is a presentation change to the locked copy pack. No new wording, statistics or sections are introduced. CSS/JS cache keys are `gazette-20261001-motion1`.
+This is a presentation change to the locked copy pack plus the beat 04 stub. No new thesis wording is invented beyond the freeze. CSS/JS cache keys are `gazette-20261001-opus1`.
 
 Check direct file opening and static HTTP serving, 320/390/640/768/1024/1440px layouts, horizontal overflow, horizontal mark lockups, the exact hero/sticky boundary, once-only scroll reveals, preference changes, reduced motion, printing and JavaScript-disabled reading. Keep CNAME, favicon and assets/brand intact. Version both stylesheet and script query parameters in index.html.
-
-Verified in headless Chrome on October 1, 2026: all six listed widths fit without horizontal overflow and preserve the horizontal mast lockup; the sticky bar switches at the hero boundary in both directions; scroll reveals animate once and finish; reduced motion works on load and after a live preference change; print reveals pending content; direct file opening works with JavaScript disabled. Desktop and phone screenshots were visually reviewed. JavaScript syntax, unique IDs, local asset paths, versioned CSS/JS URLs, zero CTA/navigation markup and `git diff --check` also pass. CNAME, favicon and brand assets are unchanged.
-
-Motion pass verification: HTML text nodes compared against the pre-motion working copy with exact equality. Chrome checks passed at 320/390/640/768/1024/1440px, including sticky boundary in both directions, staggered once-only reveals, hero animation hooks, reduced motion on load and live cancellation (zero active animations), print and no-JS direct-file reading. Desktop and phone screenshots reviewed. JavaScript syntax and whitespace checks passed.
